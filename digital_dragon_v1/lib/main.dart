@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             debugShowCheckedModeBanner: false,
-            home: const Start(),
+            home: const Start(key: Key("startScreen"),),
           );
         }
       },
@@ -38,15 +38,15 @@ class MyApp extends StatelessWidget {
 class Splash extends StatelessWidget {
   const Splash({Key? key}) : super(key: key);
 
-  static TextStyle textStyle = const TextStyle(
-    color: ColorsApp.kPrimaryColor,
-    fontSize: 48,
-    fontFamily: 'Ubuntu',
-    fontWeight: FontWeight.w700,
-  );
-
   @override
   Widget build(BuildContext context) {
+    const TextStyle textStyle = TextStyle(
+      color: ColorsApp.kPrimaryColor,
+      fontSize: 48,
+      fontFamily: 'Ubuntu',
+      fontWeight: FontWeight.w700,
+    );
+
     bool lightMode =
         MediaQuery.of(context).platformBrightness == Brightness.light;
     return Scaffold(
@@ -61,7 +61,7 @@ class Splash extends StatelessWidget {
             ] else ...[
               Image.asset('assets/images/splash_icon.png')
             ],
-            Text(
+            const Text(
               'DD\nDigital Dragon',
               style: textStyle,
               textAlign: TextAlign.center,
