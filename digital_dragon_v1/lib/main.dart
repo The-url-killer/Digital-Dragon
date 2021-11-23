@@ -1,7 +1,9 @@
 import 'dart:ui';
 
 import 'package:digital_dragon_v1/constants/colors.dart';
-import 'package:digital_dragon_v1/screens/start_screen.dart';
+import 'package:digital_dragon_v1/constants/routes.dart';
+import 'package:digital_dragon_v1/screens/signup/signin_screen.dart';
+import 'package:digital_dragon_v1/screens/start/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
       future: Init.instance.initialize(),
       builder: (context, AsyncSnapshot snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const MaterialApp(home: Splash());
+          return const MaterialApp(
+              debugShowCheckedModeBanner: false, home: Splash());
         } else {
           return MaterialApp(
             title: 'Flutter Demo',
@@ -27,7 +30,16 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             debugShowCheckedModeBanner: false,
-            home: const Start(key: Key("startScreen"),),
+            initialRoute: Routes.start,
+            routes: <String, WidgetBuilder>{
+              Routes.start: (context) => const Start(),
+              Routes.signIn: (context) => const SignIn()
+            },
+            home: const Scaffold(
+              body: Start(
+                key: Key("startScreen"),
+              ),
+            ),
           );
         }
       },

@@ -5,13 +5,16 @@ import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+typedef HandleOnClick = void Function();
+
 class SolidButton extends StatefulWidget {
-  SolidButton(this.content, this.color, this.fontColor, {Key? key})
+  SolidButton(this.content, this.color, this.fontColor, this.onTap, {Key? key})
       : super(key: key);
 
   final String content;
   final Color color;
   Color fontColor = ColorsApp.kWhite;
+  final HandleOnClick onTap;
 
   @override
   _SolidButtonState createState() => _SolidButtonState();
@@ -33,10 +36,9 @@ class _SolidButtonState extends State<SolidButton> {
         height: heightInk,
         decoration: BoxDecoration(borderRadius: borderRadius),
         child: InkWell(
+          borderRadius: borderRadius,
           onTap: () {
-            setState(() {
-              log("Button");
-            });
+            widget.onTap();
           },
           child: Center(
             child: Text(widget.content,

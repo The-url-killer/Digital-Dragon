@@ -1,8 +1,9 @@
-import 'dart:math';
+import 'dart:developer';
 
 import 'package:digital_dragon_v1/components/solid_button.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
+import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,10 @@ class Start extends StatelessWidget {
       fontFamily: 'Ubuntu',
       fontSize: FontSize.kFontSize36,
     );
+
+    void handleOnClickSingIn() {
+      Navigator.of(context).pushNamed(Routes.signIn);
+    }
 
     return Scaffold(
       body: Stack(
@@ -87,13 +92,14 @@ class Start extends StatelessWidget {
                         "Entrar",
                         ColorsApp.kPrimaryColor,
                         ColorsApp.kWhite,
+                        handleOnClickSingIn,
                         key: const Key("loginButton"),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: paddingSize),
-                      child: SolidButton(
-                          "Registrar-se", ColorsApp.kWhite, ColorsApp.kBlack,
+                      child: SolidButton("Registrar-se", ColorsApp.kWhite,
+                          ColorsApp.kBlack, handleOnClickSingIn,
                           key: const Key("registerButton")),
                     )
                   ],

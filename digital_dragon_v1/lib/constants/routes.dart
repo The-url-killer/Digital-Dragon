@@ -1,16 +1,16 @@
 class Routes {
-  static const START = "/start";
-  static const SIGNIN = "/signin";
-  static const SIGNUP = "/signup";
-  static const HOME = "/";
-  static const USER = "/me";
-  static const CREATE_CHARACTER = "/create-character";
-  static const CREATE_CAMPAING = "/create-campaign";
-  static const CHARACTER = "/character";
-  static const CAMPAING = "/campaign";
-  static const HABILITIES = "/habilities";
-  static const INVENTORY = "/invetory";
-  static const LORE = "/lore";
-  static const FRIENDS = "/friends";
-  static const ANOTATIONS = "/anotations";
+  static const start = "/start";
+  static const signIn = "/signin";
+  static const signUp = "/signup";
+  static const home = "/";
+  static const user = "/me";
+  static const createCharacter = "/create-character";
+  static const createCampaign = "/create-campaign";
+  static const character = "/character";
+  static const campaign = "/campaign";
+  static const habilities = "/habilities";
+  static const inventory = "/invetory";
+  static const lore = "/lore";
+  static const friends = "/friends";
+  static const anotations = "/anotations";
 }
