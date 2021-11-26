@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
-import 'package:digital_dragon_v1/screens/signup/signin_screen.dart';
+import 'package:digital_dragon_v1/screens/signin/signin_screen.dart';
 import 'package:digital_dragon_v1/screens/start/start_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
