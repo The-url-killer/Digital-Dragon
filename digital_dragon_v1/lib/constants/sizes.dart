@@ -6,6 +6,6 @@ class Sizes {
   }
 
   static double heigth(BuildContext context) {
-    return MediaQuery.of(context).size.width;
+    return MediaQuery.of(context).size.height;
   }
 }
