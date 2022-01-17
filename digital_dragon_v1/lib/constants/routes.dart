@@ -1,7 +1,7 @@
 class Routes {
   static const start = "/start";
-  static const signIn = "/signin";
-  static const signUp = "/signup";
+  static const signIn = "/sign-in";
+  static const signUp = "/sign-up";
   static const home = "/";
   static const user = "/me";
   static const createCharacter = "/create-character";

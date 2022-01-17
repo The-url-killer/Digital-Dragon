@@ -2,7 +2,7 @@ import 'package:digital_dragon_v1/components/solid_button.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:digital_dragon_v1/hooks/use-user.hook.dart';
 import 'package:flutter/material.dart';
 
 class SignIn extends StatefulWidget {
@@ -30,6 +30,10 @@ class _SignInState extends State<SignIn> {
   void dispose() {
     inputFocus.dispose();
     super.dispose();
+  }
+
+  void handleClick() {
+    fetch();
   }
 
   @override
@@ -146,8 +150,8 @@ class _SignInState extends State<SignIn> {
                         ),
                       ),
                       const SizedBox(height: 20),
-                      SolidButton(
-                          "Entrar", ColorsApp.kBlack, ColorsApp.kWhite, () {}),
+                      SolidButton("Entrar", ColorsApp.kBlack, ColorsApp.kWhite,
+                          handleClick),
                       const SizedBox(height: 12),
                       SolidButton("Cadastrar", ColorsApp.kWhite,
                           ColorsApp.kBlack, () {})
