@@ -17,45 +17,47 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class UserService {
 
-    public String createUser(CreateUserRequest createUserRequest) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
+  public WriteResult createUser(CreateUserRequest createUserRequest)
+      throws ExecutionException, InterruptedException {
+    Firestore dbFirestore = FirestoreClient.getFirestore();
 
-        User user = UserMapper.createUserRequestToModel(createUserRequest);
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("user").document(createUserRequest.getEmail()).set(user);
+    User user = UserMapper.createUserRequestToModel(createUserRequest);
+    ApiFuture<WriteResult> collectionsApiFuture =
+        dbFirestore.collection("user").document(createUserRequest.getEmail()).set(user);
 
-        return collectionsApiFuture.get().getUpdateTime().toString();
+    return collectionsApiFuture.get();
+  }
+
+  public String loginUser(LoginRequest loginRequest)
+      throws ExecutionException, InterruptedException {
+    User user = getUser(loginRequest.getEmail());
+
+    assert user != null;
+    if (!user.getPassword().equals(loginRequest.getPassword())) {
+      return "Usuário ou senha inválida";
     }
 
-    public String loginUser(LoginRequest loginRequest) throws ExecutionException, InterruptedException {
+    return user.getEmail();
+  }
 
-        User user = getUser(loginRequest.getEmail());
+  public User getUser(String email) throws ExecutionException, InterruptedException {
+    Firestore dbFirestore = FirestoreClient.getFirestore();
+    DocumentReference documentReference = dbFirestore.collection("user").document(email);
 
-        assert user != null;
-        if (!user.getPassword().equals(loginRequest.getPassword())) {
-            return "Usuário ou senha inválida";
-        }
+    ApiFuture<DocumentSnapshot> future = documentReference.get();
 
-        return user.getEmail();
+    DocumentSnapshot documentSnapshot = future.get();
+
+    if (!documentSnapshot.exists()) {
+      System.out.println("Usuário não existe");
     }
 
-    public User getUser(String email) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        DocumentReference documentReference = dbFirestore.collection("user").document(email);
+    return documentSnapshot.toObject(User.class);
+  }
 
-        ApiFuture<DocumentSnapshot> future = documentReference.get();
+  public void saveUser(User user) throws ExecutionException, InterruptedException {
+    Firestore dbFirestore = FirestoreClient.getFirestore();
 
-        DocumentSnapshot documentSnapshot = future.get();
-
-        if (!documentSnapshot.exists()) {
-            System.out.println("Usuário não existe");
-        }
-
-        return documentSnapshot.toObject(User.class);
-    }
-
-    public void saveUser(User user) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-
-         dbFirestore.collection("user").document(user.getEmail()).set(user);
-    }
+    dbFirestore.collection("user").document(user.getEmail()).set(user);
+  }
 }

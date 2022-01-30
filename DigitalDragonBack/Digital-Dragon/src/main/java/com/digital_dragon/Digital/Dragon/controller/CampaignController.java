@@ -1,25 +1,40 @@
 package com.digital_dragon.Digital.Dragon.controller;
 
+import com.digital_dragon.Digital.Dragon.models.Campaing;
+import com.digital_dragon.Digital.Dragon.representation.CampaingResponse;
 import com.digital_dragon.Digital.Dragon.representation.request.CreateCampaignRequest;
 import com.digital_dragon.Digital.Dragon.services.CampaignService;
+import com.google.cloud.firestore.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-@RestController
+@RestController("/campaign")
 public class CampaignController {
 
-    @Autowired
-    private CampaignService campaignService;
+  @Autowired private CampaignService campaignService;
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/create-campaign")
-    public String createCampaign(@RequestBody CreateCampaignRequest createCampaignRequest) throws ExecutionException, InterruptedException {
-        return campaignService.createCampaign(createCampaignRequest);
-    }
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping("/create")
+  public WriteResult createCampaign(@RequestBody CreateCampaignRequest createCampaignRequest)
+      throws ExecutionException, InterruptedException {
+    return campaignService.createCampaign(createCampaignRequest);
+  }
+
+  @ResponseStatus(HttpStatus.OK)
+  @GetMapping("/campaign/{id}")
+  public Campaing getCampaign(@PathVariable String id)
+      throws ExecutionException, InterruptedException {
+    return campaignService.getCampaign(id);
+  }
+
+  @ResponseStatus(HttpStatus.OK)
+  @GetMapping("/campaign")
+  public List<CampaingResponse> getAllCampaignsByID()
+      throws ExecutionException, InterruptedException {
+    return campaignService.getAllCampaingByEmail("diulinho@rei.delas");
+  }
 }

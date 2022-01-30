@@ -9,8 +9,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class Monster extends BaseCharacter implements Serializable {
-    private List<Equipment> items;
-    private List<Skill> skills;
-    private Race race;
-    private Class aClass;
+  private List<Equipment> items;
+  private List<Skill> skills;
+  private Race race;
+  private Class aClass;
 }

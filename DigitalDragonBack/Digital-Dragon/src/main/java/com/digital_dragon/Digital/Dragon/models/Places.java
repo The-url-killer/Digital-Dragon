@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Data
 public class Places implements Serializable {
-    private String image;
-    private String name;
-    private String lore;
+  private String image;
+  private String name;
+  private String lore;
 }

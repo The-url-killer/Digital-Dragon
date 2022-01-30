@@ -14,26 +14,27 @@ import java.util.concurrent.ExecutionException;
 @Service
 public class FirebaseService {
 
-    public String saveUserDetails(User person) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        ApiFuture<WriteResult> collectionsApiFuture = dbFirestore.collection("users").document().set(person);
-        return collectionsApiFuture.get().getUpdateTime().toString();
+  public String saveUserDetails(User person) throws ExecutionException, InterruptedException {
+    Firestore dbFirestore = FirestoreClient.getFirestore();
+    ApiFuture<WriteResult> collectionsApiFuture =
+        dbFirestore.collection("users").document().set(person);
+    return collectionsApiFuture.get().getUpdateTime().toString();
+  }
+
+  public User getUserDetails(String id) throws ExecutionException, InterruptedException {
+    Firestore dbFirestore = FirestoreClient.getFirestore();
+    DocumentReference documentReference = dbFirestore.collection("users").document(id);
+    ApiFuture<DocumentSnapshot> future = documentReference.get();
+
+    DocumentSnapshot documentSnapshot = future.get();
+
+    User person = null;
+
+    if (documentSnapshot.exists()) {
+      person = documentSnapshot.toObject(User.class);
+      return person;
+    } else {
+      return null;
     }
-
-    public User getUserDetails(String id) throws ExecutionException, InterruptedException {
-        Firestore dbFirestore = FirestoreClient.getFirestore();
-        DocumentReference documentReference = dbFirestore.collection("users").document(id);
-        ApiFuture<DocumentSnapshot> future = documentReference.get();
-
-        DocumentSnapshot documentSnapshot = future.get();
-
-        User person = null;
-
-        if (documentSnapshot.exists()) {
-            person = documentSnapshot.toObject(User.class);
-            return person;
-        } else {
-            return null;
-        }
-    }
+  }
 }

@@ -12,20 +12,19 @@ import java.io.IOException;
 @Service
 public class FirebaseInitialize {
 
-    @PostConstruct
-    public void initialize() throws IOException {
-        try {
-            FileInputStream serviceAccount =
-                    new FileInputStream("./serviceAccountKey.json");
+  @PostConstruct
+  public void initialize() throws IOException {
+    try {
+      FileInputStream serviceAccount = new FileInputStream("./serviceAccountKey.json");
 
-            FirebaseOptions options = new FirebaseOptions.Builder()
-                    .setCredentials(GoogleCredentials.fromStream(serviceAccount))
-                    .build();
+      FirebaseOptions options =
+          new FirebaseOptions.Builder()
+              .setCredentials(GoogleCredentials.fromStream(serviceAccount))
+              .build();
 
-            FirebaseApp.initializeApp(options);
-        } catch (Exception E) {
-            System.out.println(E);
-        }
+      FirebaseApp.initializeApp(options);
+    } catch (Exception E) {
+      System.out.println(E);
     }
-
+  }
 }

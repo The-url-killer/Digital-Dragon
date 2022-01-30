@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 public class UserMapper {
 
-    public static User createUserRequestToModel(CreateUserRequest createUserRequest) {
-        User user = new User();
+  public static User createUserRequestToModel(CreateUserRequest createUserRequest) {
+    User user = new User();
 
-        user.setName(createUserRequest.getName());
-        user.setEmail(createUserRequest.getEmail());
-        user.setPassword(createUserRequest.getPassword());
-        user.setCampaigns(new ArrayList<>());
-        user.setCharacters(new ArrayList<>());
+    user.setName(createUserRequest.getName());
+    user.setEmail(createUserRequest.getEmail());
+    user.setPassword(createUserRequest.getPassword());
+    user.setCampaigns(new ArrayList<>());
+    user.setCharacters(new ArrayList<>());
 
-        return user;
-    }
+    return user;
+  }
 }

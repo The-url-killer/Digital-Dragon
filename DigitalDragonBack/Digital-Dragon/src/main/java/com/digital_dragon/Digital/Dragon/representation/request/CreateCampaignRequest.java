@@ -5,11 +5,8 @@ import lombok.Data;
 
 @Data
 public class CreateCampaignRequest {
-    @NotNull
-    private String name;
-    private String image;
-    @NotNull
-    private String email;
-    @NotNull
-    private String lore;
+  @NotNull private String name;
+  private String image;
+  @NotNull private String email;
+  private String history;
 }

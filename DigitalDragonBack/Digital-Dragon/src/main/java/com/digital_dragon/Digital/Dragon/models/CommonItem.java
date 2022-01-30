@@ -8,10 +8,9 @@ import java.io.Serializable;
 @Getter
 @Setter
 public class CommonItem extends BaseEquipment implements Serializable {
-    public CommonItem(String name, String price, String size) {
-        super(name, price, size);
-    }
+  public CommonItem(String name, String price, String size) {
+    super(name, price, size);
+  }
 
-    public CommonItem() {
-    }
+  public CommonItem() {}
 }

@@ -1,15 +1,12 @@
 package com.digital_dragon.Digital.Dragon.controller;
 
-import com.digital_dragon.Digital.Dragon.models.User;
 import com.digital_dragon.Digital.Dragon.representation.request.CreateUserRequest;
 import com.digital_dragon.Digital.Dragon.representation.request.LoginRequest;
-import com.digital_dragon.Digital.Dragon.services.FirebaseService;
 import com.digital_dragon.Digital.Dragon.services.UserService;
+import com.google.cloud.firestore.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.net.CacheRequest;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -25,7 +22,7 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/sign-up")
-    public String signUp(@RequestBody CreateUserRequest createUserRequest) throws ExecutionException, InterruptedException {
+    public WriteResult signUp(@RequestBody CreateUserRequest createUserRequest) throws ExecutionException, InterruptedException {
         return userService.createUser(createUserRequest);
     }
 
