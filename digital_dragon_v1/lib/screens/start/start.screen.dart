@@ -1,10 +1,9 @@
+import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/components/solid_button.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 
 class Start extends StatelessWidget {
   const Start({Key? key}) : super(key: key);
@@ -30,8 +29,12 @@ class Start extends StatelessWidget {
       fontSize: FontSize.kFontSize36,
     );
 
-    void handleOnClickSingIn() {
+    handleOnClickSingIn() {
       Navigator.of(context).pushNamed(Routes.signIn);
+    }
+
+    handleClickSignUp() {
+      Navigator.of(context).pushNamed(Routes.signUp);
     }
 
     return Scaffold(
@@ -97,7 +100,7 @@ class Start extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.only(top: paddingSize),
                       child: SolidButton("Registrar-se", ColorsApp.kWhite,
-                          ColorsApp.kBlack, handleOnClickSingIn,
+                          ColorsApp.kBlack, handleClickSignUp,
                           key: const Key("registerButton")),
                     )
                   ],

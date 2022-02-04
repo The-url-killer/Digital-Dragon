@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-@RestController("/campaign")
+@RestController
+@RequestMapping("/campaign")
 public class CampaignController {
 
   @Autowired private CampaignService campaignService;
@@ -25,14 +26,14 @@ public class CampaignController {
   }
 
   @ResponseStatus(HttpStatus.OK)
-  @GetMapping("/campaign/{id}")
+  @GetMapping("/{id}")
   public Campaing getCampaign(@PathVariable String id)
       throws ExecutionException, InterruptedException {
     return campaignService.getCampaign(id);
   }
 
   @ResponseStatus(HttpStatus.OK)
-  @GetMapping("/campaign")
+  @GetMapping
   public List<CampaingResponse> getAllCampaignsByID()
       throws ExecutionException, InterruptedException {
     return campaignService.getAllCampaingByEmail("diulinho@rei.delas");

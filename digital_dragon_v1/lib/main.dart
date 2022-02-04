@@ -1,9 +1,11 @@
-import 'package:digital_dragon_v1/constants/colors.dart';
-import 'package:digital_dragon_v1/constants/routes.dart';
-import 'package:digital_dragon_v1/screens/signin/signin_screen.dart';
-import 'package:digital_dragon_v1/screens/start/start_screen.dart';
+import 'package:digital_dragon_v1/screens/create-campaign/create-campaign.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:digital_dragon_v1/constants/colors.dart';
+import 'package:digital_dragon_v1/constants/routes.dart';
+import 'package:digital_dragon_v1/screens/sign-up/sign-up.screen.dart';
+import 'package:digital_dragon_v1/screens/signin/signin.screen.dart';
+import 'package:digital_dragon_v1/screens/start/start.screen.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
@@ -31,7 +33,9 @@ class MyApp extends StatelessWidget {
             initialRoute: Routes.start,
             routes: <String, WidgetBuilder>{
               Routes.start: (context) => const Start(),
-              Routes.signIn: (context) => const SignIn()
+              Routes.signIn: (context) => const SignIn(),
+              Routes.signUp: (context) => const SignUp(),
+              Routes.createCampaign: (context) => const CreateCampaign(),
             },
             home: const Scaffold(
               body: Start(

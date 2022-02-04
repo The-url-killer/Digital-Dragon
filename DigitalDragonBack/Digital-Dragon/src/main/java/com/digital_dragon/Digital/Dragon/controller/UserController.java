@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.concurrent.ExecutionException;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
