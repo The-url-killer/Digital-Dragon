@@ -1,14 +1,15 @@
-package com.digital_dragon.Digital.Dragon.models;
+package com.digital_dragon.Digital.Dragon.representation.request;
 
 import lombok.Data;
+import lombok.Getter;
 
-import java.io.Serializable;
 import java.util.List;
 
+@Getter
 @Data
-public class Skill implements Serializable {
-  private Integer level;
+public class CreateSkillRequest {
   private String name;
+  private Integer level;
   private List<String> classes;
   private String school;
   private String castTime;

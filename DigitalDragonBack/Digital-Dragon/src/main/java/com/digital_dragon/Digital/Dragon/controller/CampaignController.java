@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 @RestController
-@RequestMapping("/campaign")
+@RequestMapping("campaign")
 public class CampaignController {
 
   @Autowired private CampaignService campaignService;

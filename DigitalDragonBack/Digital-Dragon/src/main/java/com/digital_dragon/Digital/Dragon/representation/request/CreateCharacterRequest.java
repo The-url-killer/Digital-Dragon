@@ -11,11 +11,11 @@ import java.util.Map;
 @Getter
 @Setter
 public class CreateCharacterRequest {
-    private String name;
-    private String email;
-    private Map<String, Integer> atributes;
-    private List<String> expertises;
-    private String lore;
-    private Race race;
-    private Class aClass;
+  private String name;
+  private String email;
+  private Map<String, Integer> atributes;
+  private Map<String, Boolean> expertises;
+  private String lore;
+  private Race race;
+  private Class aClass;
 }

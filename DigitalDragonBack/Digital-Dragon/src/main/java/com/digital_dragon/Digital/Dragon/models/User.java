@@ -10,6 +10,6 @@ public class User implements Serializable {
   private String email;
   private String name;
   private String password;
-  private List<Character> characters;
-  private List<Campaing> campaigns;
+  private List<String> characters;
+  private List<String> campaigns;
 }

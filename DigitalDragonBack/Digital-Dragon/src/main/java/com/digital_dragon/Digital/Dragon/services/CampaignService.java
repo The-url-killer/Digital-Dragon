@@ -27,8 +27,6 @@ public class CampaignService {
       throws ExecutionException, InterruptedException {
     User user = userService.getUser(createCampaignRequest.getEmail());
 
-    System.out.println(createCampaignRequest);
-
     Firestore dbFirestore = FirestoreClient.getFirestore();
 
     Map<String, Object> campaing =
@@ -36,6 +34,10 @@ public class CampaignService {
 
     ApiFuture<WriteResult> collectionsApiFuture =
         dbFirestore.collection("campaign").document(campaing.get("name").toString()).set(campaing);
+
+    user.getCampaigns().add(createCampaignRequest.getName());
+
+    userService.saveUser(user);
 
     return collectionsApiFuture.get();
   }
