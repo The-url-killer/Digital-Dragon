@@ -1,5 +1,6 @@
+import 'package:digital_dragon_v1/constants/type_button.dart';
+import 'package:digital_dragon_v1/ui/components/solid_button.dart';
 import 'package:flutter/material.dart';
-import 'package:digital_dragon_v1/components/solid_button.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/hooks/use-user.hook.dart';
@@ -42,11 +43,21 @@ class _SignUpState extends State<SignUp> {
           TextFormField(controller: passController),
           TextFormField(controller: passConfirmController),
           const SizedBox(height: 20),
-          SolidButton("Já tenho uma conta", ColorsApp.kBlack, ColorsApp.kWhite,
-              handleClickHaveAccount),
+          SolidButton(
+            "Já tenho uma conta",
+            ColorsApp.kBlack,
+            ColorsApp.kWhite,
+            handleClickHaveAccount,
+            TypeButton.solid,
+          ),
           const SizedBox(height: 12),
-          SolidButton("Cadastrar e entrar", ColorsApp.kWhite, ColorsApp.kBlack,
-              handleClickSignUp)
+          SolidButton(
+            "Cadastrar e entrar",
+            ColorsApp.kWhite,
+            ColorsApp.kBlack,
+            handleClickSignUp,
+            TypeButton.transparent,
+          )
         ],
       ),
     );

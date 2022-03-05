@@ -44,9 +44,10 @@ flutter:
     - family: Ubuntu
       fonts:
         - asset: assets/fonts/Ubuntu_Light.ttf
-          weight: 300
+          weight: 400
         - asset: assets/fonts/Ubuntu_Regular.ttf
-        - asset: assets/fonts/Ubuntu_Medium.ttf
           weight: 500
+        - asset: assets/fonts/Ubuntu_Medium.ttf
+          weight: 600
         - asset: assets/fonts/Ubuntu_Bold.ttf
           weight: 700

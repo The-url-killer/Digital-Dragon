@@ -1,5 +1,6 @@
+import 'package:digital_dragon_v1/constants/type_button.dart';
+import 'package:digital_dragon_v1/ui/components/solid_button.dart';
 import 'package:flutter/material.dart';
-import 'package:digital_dragon_v1/components/solid_button.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/context/globals.dart' as globals;
 
@@ -28,7 +29,12 @@ class _CreateCampaignState extends State<CreateCampaign> {
           TextFormField(controller: loreController),
           const SizedBox(height: 20),
           SolidButton(
-              "Criar", ColorsApp.kBlack, ColorsApp.kWhite, handleClick),
+            "Criar",
+            ColorsApp.kBlack,
+            ColorsApp.kWhite,
+            handleClick,
+            TypeButton.solid,
+          ),
         ],
       ),
     );

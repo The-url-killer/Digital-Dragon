@@ -6,13 +6,14 @@ import 'package:flutter/material.dart';
 typedef HandleOnClick = void Function();
 
 class SolidButton extends StatefulWidget {
-  SolidButton(this.content, this.color, this.fontColor, this.onTap, {Key? key})
+  SolidButton(this.content, this.color, this.fontColor, this.onTap, this.type, {Key? key})
       : super(key: key);
 
   final String content;
   final Color color;
   Color fontColor = ColorsApp.kWhite;
   final HandleOnClick onTap;
+  final String type;
 
   @override
   _SolidButtonState createState() => _SolidButtonState();
@@ -28,7 +29,7 @@ class _SolidButtonState extends State<SolidButton> {
         const BorderRadius.all(Radius.circular(borderRadiusSize));
 
     return Material(
-      color: widget.color,
+      color: buttonFormat(widget.color, widget.type),
       borderRadius: borderRadius,
       child: Ink(
         height: heightInk,
@@ -44,10 +45,14 @@ class _SolidButtonState extends State<SolidButton> {
                     fontFamily: 'Ubuntu',
                     fontWeight: FontWeight.w600,
                     color: widget.fontColor,
-                    fontSize: FontSize.kFontSize24)),
+                    fontSize: FontSize.kFontSize18)),
           ),
         ),
       ),
     );
+  }
+
+  Color buttonFormat(color, type) {
+    return type == "solid" ? color : Colors.transparent;
   }
 }
