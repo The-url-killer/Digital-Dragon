@@ -14,14 +14,14 @@ public class Armor extends BaseEquipment implements Serializable {
   private String strength;
   private Boolean desStealth;
 
-  public Armor(String name, String price, String size) {
+  public Armor(String name, String price, Double size) {
     super(name, price, size);
   }
 
   public Armor(
       String name,
       String price,
-      String size,
+      Double size,
       String armorClass,
       String strength,
       Boolean desStealth) {

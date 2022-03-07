@@ -10,11 +10,11 @@ import java.util.List;
 @NoArgsConstructor
 public class CreateRaceRequest {
     private String name;
-    private Integer skillGrowth;
-    private Integer age;
-    private Double height;
+    private String skillGrowth;
+    private String age;
+    private String height;
     private String tendency;
     private Double speed;
-    private List<Skill> skills;
+    private List<String> skills;
     private List<String> languages;
 }

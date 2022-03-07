@@ -12,6 +12,5 @@ public class Character extends BaseCharacter implements Serializable {
   private String campaing;
   private List<Equipment> items;
   private List<Skill> skills;
-  private Race race;
   private Class aClass;
 }

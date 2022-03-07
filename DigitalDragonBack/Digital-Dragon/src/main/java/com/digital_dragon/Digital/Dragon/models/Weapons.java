@@ -13,7 +13,7 @@ public class Weapons extends BaseEquipment implements Serializable {
   private String description;
 
   public Weapons(
-      String name, String price, String size, String type, String damage, String description) {
+      String name, String price, Double size, String type, String damage, String description) {
     super(name, price, size);
     this.type = type;
     this.damage = damage;

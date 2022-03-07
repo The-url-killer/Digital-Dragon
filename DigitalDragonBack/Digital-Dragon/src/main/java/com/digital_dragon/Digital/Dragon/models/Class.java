@@ -9,7 +9,8 @@ import java.util.List;
 public class Class implements Serializable {
   private String name;
   private Double lifePoints;
-  private List<String> proficiencies;
-  private List<Equipment> equipments;
-  private List<Skill> skills;
+  private List<String> classVariation;
+  private String proficiencies;
+  private String equipments;
+  private List<String> skills;
 }

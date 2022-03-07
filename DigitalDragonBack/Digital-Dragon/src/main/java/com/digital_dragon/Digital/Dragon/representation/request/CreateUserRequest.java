@@ -1,8 +1,10 @@
 package com.digital_dragon.Digital.Dragon.representation.request;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class CreateUserRequest {
   private String name;
   private String email;

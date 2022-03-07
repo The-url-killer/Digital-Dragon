@@ -29,9 +29,9 @@ public class CharacterService {
                 CharacterMapper.createCharacterRequestToModel(createCharacterRequest);
 
         ApiFuture<WriteResult> collectionsApiFuture =
-                dbFirestore.collection("characters").document(character.get("name").toString()).set(character);
+                dbFirestore.collection("characters").document(character.get("id").toString()).set(character);
 
-        user.getCharacters().add(createCharacterRequest.getName());
+        user.getCharacters().add(character.get("id").toString());
 
         userService.saveUser(user);
     }

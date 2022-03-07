@@ -1,12 +1,12 @@
 package com.digital_dragon.Digital.Dragon.representation.request;
 
-import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.util.List;
 
 @Getter
-@Data
+@Setter
 public class CreateSkillRequest {
   private String name;
   private Integer level;
