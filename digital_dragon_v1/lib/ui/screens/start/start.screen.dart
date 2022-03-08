@@ -1,5 +1,6 @@
+import 'package:digital_dragon_v1/constants/type_button.dart';
+import 'package:digital_dragon_v1/ui/components/solid_button.dart';
 import 'package:flutter/material.dart';
-import 'package:digital_dragon_v1/components/solid_button.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
@@ -94,14 +95,22 @@ class Start extends StatelessWidget {
                         ColorsApp.kPrimaryColor,
                         ColorsApp.kWhite,
                         handleOnClickSingIn,
+                        TypeButton.solid,
                         key: const Key("loginButton"),
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(top: paddingSize),
-                      child: SolidButton("Registrar-se", ColorsApp.kWhite,
-                          ColorsApp.kBlack, handleClickSignUp,
-                          key: const Key("registerButton")),
+                      child: SolidButton(
+                        "Registrar-se",
+                        ColorsApp.kWhite,
+                        ColorsApp.kBlack,
+                        handleClickSignUp,
+                        TypeButton.solid,
+                        key: const Key(
+                          "registerButton",
+                        ),
+                      ),
                     )
                   ],
                 )),

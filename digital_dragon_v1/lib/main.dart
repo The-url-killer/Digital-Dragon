@@ -1,11 +1,11 @@
-import 'package:digital_dragon_v1/screens/create-campaign/create-campaign.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/create-campaign/create-campaign.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/sign-up/sign-up.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/signin/signin.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/start/start.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
-import 'package:digital_dragon_v1/screens/sign-up/sign-up.screen.dart';
-import 'package:digital_dragon_v1/screens/signin/signin.screen.dart';
-import 'package:digital_dragon_v1/screens/start/start.screen.dart';
 
 void main() {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: ThemeData(
               primarySwatch: Colors.blue,
+              fontFamily: 'Ubuntu',
             ),
             debugShowCheckedModeBanner: false,
             initialRoute: Routes.start,
@@ -57,7 +58,6 @@ class Splash extends StatelessWidget {
     const TextStyle textStyle = TextStyle(
       color: ColorsApp.kPrimaryColor,
       fontSize: 48,
-      fontFamily: 'Ubuntu',
       fontWeight: FontWeight.w700,
     );
 
