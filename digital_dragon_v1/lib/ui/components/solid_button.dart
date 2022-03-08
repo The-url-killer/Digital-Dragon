@@ -23,7 +23,7 @@ class _SolidButtonState extends State<SolidButton> {
   @override
   Widget build(BuildContext context) {
     const double borderRadiusSize = 10;
-    const double heightInk = 50;
+    const double heightInk = 42;
 
     BorderRadius borderRadius =
         const BorderRadius.all(Radius.circular(borderRadiusSize));
