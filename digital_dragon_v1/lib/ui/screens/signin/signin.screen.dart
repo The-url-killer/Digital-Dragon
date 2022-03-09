@@ -1,12 +1,10 @@
-import 'dart:developer';
-
 import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_button.dart';
-import 'package:digital_dragon_v1/ui/components/input.dart';
-import 'package:digital_dragon_v1/ui/components/link.dart';
-import 'package:digital_dragon_v1/ui/components/solid_button.dart';
+import 'package:digital_dragon_v1/ui/components/input.component.dart';
+import 'package:digital_dragon_v1/ui/components/link.component.dart';
+import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 
@@ -22,11 +20,10 @@ class _SignInState extends State<SignIn> {
   TextEditingController passController = TextEditingController();
 
   handleClick() {
-    log(userController.text);
     // var response =
     //     login(email: userController.text, password: passController.text);
     // response.then((value) => {globals.email = value});
-    // Navigator.of(context).pushNamed(Routes.createCampaign);
+    Navigator.of(context).pushNamed(Routes.home);
   }
 
   handleClickDontHaveAccount() {

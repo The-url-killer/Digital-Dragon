@@ -1,5 +1,5 @@
 import 'package:digital_dragon_v1/constants/type_button.dart';
-import 'package:digital_dragon_v1/ui/components/solid_button.dart';
+import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';

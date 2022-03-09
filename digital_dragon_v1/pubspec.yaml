@@ -1,7 +1,7 @@
 name: digital_dragon_v1
 description: Um aplicativo aonde você tem o mundo de D&D nas suas mãos.
 
-publish_to: 'none' 
+publish_to: "none"
 
 version: 1.0.0+1
 
@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   http: ^0.13.4
+  carousel_slider: ^4.0.0
 
 dev_dependencies:
   flutter_test:
@@ -51,3 +52,6 @@ flutter:
           weight: 600
         - asset: assets/fonts/Ubuntu_Bold.ttf
           weight: 700
+    - family: AppIcons
+      fonts:
+        - asset: assets/images/AppIcons.ttf

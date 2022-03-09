@@ -1,9 +1,9 @@
 import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_button.dart';
-import 'package:digital_dragon_v1/ui/components/input.dart';
-import 'package:digital_dragon_v1/ui/components/link.dart';
-import 'package:digital_dragon_v1/ui/components/solid_button.dart';
+import 'package:digital_dragon_v1/ui/components/input.component.dart';
+import 'package:digital_dragon_v1/ui/components/link.component.dart';
+import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
@@ -24,13 +24,13 @@ class _SignUpState extends State<SignUp> {
   TextEditingController passConfirmController = TextEditingController();
 
   handleClickSignUp() {
-    var response = signUp(
-        name: userController.text,
-        email: emailController.text,
-        password: passController.text);
+    // var response = signUp(
+    //     name: userController.text,
+    //     email: emailController.text,
+    //     password: passController.text);
 
-    response.then((value) => {globals.email = value});
-    Navigator.of(context).pushNamed(Routes.createCampaign);
+    // response.then((value) => {globals.email = value});
+    Navigator.of(context).pushNamed(Routes.home);
   }
 
   handleClickHaveAccount() {
