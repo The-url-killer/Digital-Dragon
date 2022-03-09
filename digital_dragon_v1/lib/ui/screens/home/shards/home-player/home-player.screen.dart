@@ -4,14 +4,10 @@ import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class HomeJogador extends StatelessWidget {
-  const HomeJogador({Key? key, required this.characters}) : super(key: key);
+class HomePlayer extends StatelessWidget {
+  const HomePlayer({Key? key, required this.characters}) : super(key: key);
 
   final List<CharacterModel> characters;
-
-  List<Widget> renderCharacters() {
-    return characters.map((character) => Text(character.name)).toList();
-  }
 
   @override
   Widget build(BuildContext context) {

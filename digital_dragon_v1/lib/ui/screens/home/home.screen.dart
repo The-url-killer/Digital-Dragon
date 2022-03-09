@@ -2,7 +2,8 @@ import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/model/character-representation.model.dart';
 import 'package:digital_dragon_v1/ui/resources/app_icons.dart';
-import 'package:digital_dragon_v1/ui/screens/home/shards/home-jogador/home-jogador.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/home/shards/home-master/home-master.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/home/shards/home-player/home-player.screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -72,12 +73,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     List<Widget> _widgetOptions = <Widget>[
-      HomeJogador(
-        characters: characters,
-      ),
-      const Text(
-        'Index 1: Business',
-      ),
+      HomePlayer(characters: characters),
+      MasterHome(campaigns: campaigns),
     ];
 
     return Scaffold(
