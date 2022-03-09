@@ -2,7 +2,7 @@ class Routes {
   static const start = "/start";
   static const signIn = "/sign-in";
   static const signUp = "/sign-up";
-  static const home = "/";
+  static const home = "/home";
   static const user = "/me";
   static const createCharacter = "/create-character";
   static const createCampaign = "/create-campaign";
