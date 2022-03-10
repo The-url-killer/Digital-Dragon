@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/model/character-representation.model.dart';
 import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.component.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,7 +14,7 @@ class HomePlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
-        height: 300,
+        height: Sizes.heigth(context) * .5,
         aspectRatio: 2.0,
         enlargeCenterPage: true,
       ),

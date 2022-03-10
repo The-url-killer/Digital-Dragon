@@ -1,12 +1,16 @@
+import 'dart:convert';
+
 import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_button.dart';
+import 'package:digital_dragon_v1/model/user-data.model.dart';
 import 'package:digital_dragon_v1/ui/components/input.component.dart';
 import 'package:digital_dragon_v1/ui/components/link.component.dart';
 import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -19,10 +23,26 @@ class _SignInState extends State<SignIn> {
   TextEditingController userController = TextEditingController();
   TextEditingController passController = TextEditingController();
 
-  handleClick() {
+  handleClick() async {
     // var response =
     //     login(email: userController.text, password: passController.text);
     // response.then((value) => {globals.email = value});
+    UserData userData = UserData(
+        email: "diulidsvargas@gmail.com",
+        name: "Diuliano Vargas",
+        image:
+            "https://i.pinimg.com/236x/12/a7/1c/12a71cbd332144f553f654b7e088f832.jpg");
+
+    final prefs = await SharedPreferences.getInstance();
+
+    prefs.setString(
+        'user',
+        json.encode({
+          'email': userData.email,
+          'name': userData.name,
+          'image': userData.image,
+        }));
+
     Navigator.of(context).pushNamed(Routes.home);
   }
 
