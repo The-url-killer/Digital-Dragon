@@ -1,4 +1,5 @@
 import 'package:digital_dragon_v1/ui/screens/create-campaign/create-campaign.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/create-character/create-character.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/home/home.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/sign-up/sign-up.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/signin/signin.screen.dart';
@@ -37,8 +38,9 @@ class MyApp extends StatelessWidget {
               Routes.start: (context) => const Start(),
               Routes.signIn: (context) => const SignIn(),
               Routes.signUp: (context) => const SignUp(),
-              Routes.createCampaign: (context) => const CreateCampaign(),
               Routes.home: (context) => const Home(),
+              Routes.createCampaign: (context) => const CreateCampaign(),
+              Routes.createCharacter: (context) => const CreateCharacter(),
             },
             home: const Scaffold(
               body: Start(

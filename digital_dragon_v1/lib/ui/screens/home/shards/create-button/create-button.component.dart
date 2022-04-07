@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
@@ -15,26 +17,35 @@ class CreateButton extends StatelessWidget {
     void onPressed() {
       switch (navigateTo) {
         case 'campaign':
-          Navigator.of(context).pushNamed(Routes.campaign);
+          Navigator.of(context).pushNamed(Routes.createCampaign);
           break;
         case 'character':
-          Navigator.of(context).pushNamed(Routes.character);
+          Navigator.of(context).pushNamed(Routes.createCharacter);
           break;
         default:
           break;
       }
     }
 
-    return Container(
-      width: Sizes.width(context) * .25,
-      height: Sizes.width(context) * .25,
-      decoration: BoxDecoration(
-        color: ColorsApp.kPrimaryColor,
-        borderRadius: BorderRadius.circular(Sizes.width(context) * .13),
+    double size = Sizes.width(context) * .25;
+    BorderRadius borderRadius =
+        BorderRadius.circular(Sizes.width(context) * .13);
+
+    return Material(
+      borderRadius: borderRadius,
+      child: Ink(
+        height: size,
+        width: size,
+        decoration: BoxDecoration(
+          color: ColorsApp.kPrimaryColor,
+          borderRadius: borderRadius,
+        ),
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: borderRadius,
+          child: const Icon(Icons.add, size: 60, color: ColorsApp.kWhite),
+        ),
       ),
-      child: IconButton(
-          onPressed: onPressed,
-          icon: const Icon(Icons.add, size: 60, color: ColorsApp.kWhite)),
     );
   }
 }
