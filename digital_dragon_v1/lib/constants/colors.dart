@@ -1,4 +1,4 @@
-import 'dart:ui';
+import 'package:flutter/cupertino.dart';
 
 class ColorsApp {
   static const kPrimaryColor = Color.fromRGBO(112, 7, 246, 1.0);
