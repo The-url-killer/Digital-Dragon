@@ -1,5 +1,6 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
+import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 
 class CardItemCarousel extends StatelessWidget {
@@ -30,8 +31,8 @@ class CardItemCarousel extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: 300,
-          width: 260,
+          height: Sizes.heigth(context) * .4,
+          width: Sizes.width(context) * .8,
           child: FittedBox(
             child: ClipRRect(
                 borderRadius: const BorderRadius.all(Radius.circular(12)),
@@ -42,8 +43,8 @@ class CardItemCarousel extends StatelessWidget {
         ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(12)),
           child: Container(
-            height: 300,
-            width: 260,
+            height: Sizes.heigth(context) * .4,
+            width: Sizes.width(context) * .8,
             padding: const EdgeInsets.all(12),
             color: ColorsApp.kBlackOpacity03,
             child: Column(

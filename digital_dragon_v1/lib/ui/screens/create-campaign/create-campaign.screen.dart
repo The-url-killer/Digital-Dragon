@@ -23,7 +23,7 @@ class _CreateCampaignState extends State<CreateCampaign> {
     return Scaffold(
       body: Column(
         children: [
-          Text(globals.email),
+          Text(globals.userData.email),
           TextFormField(controller: imageController),
           TextFormField(controller: nameController),
           TextFormField(controller: loreController),
