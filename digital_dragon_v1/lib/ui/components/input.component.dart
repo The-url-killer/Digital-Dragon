@@ -19,7 +19,6 @@ class Input extends StatelessWidget {
       color: ColorsApp.kBlack,
       fontSize: FontSize.kFontSize14,
     ),
-    // contentPadding: const EdgeInsets.only(bottom: 15),
     focusedBorder: const UnderlineInputBorder(
       borderSide: BorderSide(color: ColorsApp.kPrimaryColor, width: 2.0),
     ),
@@ -33,7 +32,6 @@ class Input extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: style,
-
     );
   }
 }
