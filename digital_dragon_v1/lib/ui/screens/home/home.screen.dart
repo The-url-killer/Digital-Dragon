@@ -22,10 +22,16 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 0;
   List<CharacterModel> characters = [];
   List<CampaignModel> campaigns = [];
+  var _getUser;
+
+  @override
+  void initState() {
+    _getUser = getUser();
+
+    super.initState();
+  }
 
   Future<List<Widget>> getUser() async {
-    final userData = await globals.userData;
-
     globals.userData = UserData(
         email: 'diulianovargas@gmail.com',
         name: 'Diuliano Vargas',
@@ -90,7 +96,7 @@ class _HomeState extends State<Home> {
     List<Widget>? _widgetOptions = [];
 
     return FutureBuilder(
-        future: getUser(),
+        future: _getUser,
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             _widgetOptions = snapshot.data as List<Widget>?;
