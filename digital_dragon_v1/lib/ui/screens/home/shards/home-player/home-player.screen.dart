@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
+import 'package:digital_dragon_v1/constants/type_home_screen.dart';
 import 'package:digital_dragon_v1/model/character-representation.model.dart';
 import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.component.dart';
 import 'package:digital_dragon_v1/context/globals.dart' as globals;
@@ -50,9 +51,11 @@ class HomePlayer extends StatelessWidget {
             return Builder(
               builder: (BuildContext context) {
                 return CardItemCarousel(
+                  id: character.id,
                   name: character.name,
                   image: character.image,
                   subTitle: character.campaign,
+                  navigateTo: TypeHome.PLAYER,
                 );
               },
             );
