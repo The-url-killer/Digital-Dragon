@@ -26,9 +26,9 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
-    _getUser = getUser();
-
     super.initState();
+
+    _getUser = getUser();
   }
 
   Future<List<Widget>> getUser() async {

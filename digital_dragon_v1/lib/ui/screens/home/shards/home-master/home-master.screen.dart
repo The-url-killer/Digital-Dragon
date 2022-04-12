@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
+import 'package:digital_dragon_v1/constants/type_home_screen.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.component.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/create-button/create-button.component.dart';
@@ -35,8 +36,10 @@ class _MasterHomeState extends State<MasterHome> {
             return Builder(
               builder: (BuildContext context) {
                 return CardItemCarousel(
+                  id: campaign.id,
                   name: campaign.name,
                   image: campaign.image,
+                  navigateTo: TypeHome.MASTER,
                 );
               },
             );
