@@ -17,6 +17,7 @@ dependencies:
   carousel_slider: ^4.0.0
   shared_preferences: ^2.0.13
   image_picker: ^0.8.5
+  provider: ^6.0.2
 
 dev_dependencies:
   flutter_test:
@@ -57,3 +58,6 @@ flutter:
     - family: AppIcons
       fonts:
         - asset: assets/images/AppIcons.ttf
+    - family:  MasterIcons
+      fonts:
+        - asset: assets/images/MasterIcons.ttf
