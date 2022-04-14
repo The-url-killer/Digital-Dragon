@@ -1,4 +1,5 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
+import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/model/campaign-character-representation.model.dart';
 import 'package:digital_dragon_v1/model/campaign-place-representation.model.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
@@ -40,8 +41,8 @@ class _CampaignState extends State<Campaign> {
         name: _campaignModel.name,
         lore: _campaignModel.lore,
       ),
-      CharacterCampaign(),
-      MonsterCampaign(),
+      CharacterCampaign(characters: _campaignModel.characters),
+      MonsterCampaign(monsters: _campaignModel.monsters),
     ];
   }
 
@@ -118,6 +119,17 @@ class _CampaignState extends State<Campaign> {
               onTap: _onItemTapped,
               elevation: 1,
             ),
+            floatingActionButton: _selectedIndex == 1 || _selectedIndex == 2
+                ? FloatingActionButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, Routes.createCampaign);
+                    },
+                    backgroundColor: ColorsApp.kPrimaryColor,
+                    child: const Icon(Icons.add),
+                  )
+                : null,
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.centerFloat,
           );
         });
   }
