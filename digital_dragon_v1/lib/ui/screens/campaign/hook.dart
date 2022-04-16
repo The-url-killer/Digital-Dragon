@@ -9,7 +9,7 @@ getCampaignInfo(id) {
     lore:
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque eget pretium sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed nunc mauris, commodo non nulla nec, eleifend cursus velit. Sed a interdum nibh. Aliquam vitae eleifend tellus, ac vestibulum.",
     name: "Ice Wind",
-    notes: ["Jesus cristo", "Acaba logo", "Não sei o que fazer"],
+    notes: ["Lembrar de adicionar o Guilherme na campanha", "Arrumar fichas no final da próxima sessão", "Remover monstros não usados mais"],
     master: "diuliano.silveira@gmail.com",
     characters: [
       CampaignCharacterModel(
