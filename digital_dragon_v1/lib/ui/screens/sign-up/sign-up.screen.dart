@@ -10,7 +10,6 @@ import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
-import 'package:digital_dragon_v1/context/globals.dart' as globals;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUp extends StatefulWidget {

@@ -58,6 +58,9 @@ flutter:
     - family: AppIcons
       fonts:
         - asset: assets/images/AppIcons.ttf
-    - family:  MasterIcons
+    - family: MasterIcons
       fonts:
         - asset: assets/images/MasterIcons.ttf
+    - family: DiceIcon
+      fonts:
+        - asset: assets/images/DiceIcon.ttf

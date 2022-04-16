@@ -1,15 +1,16 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
-import 'package:digital_dragon_v1/model/campaign-character-representation.model.dart';
-import 'package:digital_dragon_v1/model/campaign-place-representation.model.dart';
-import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/model/campaign-screen-representation.model.dart';
+import 'package:digital_dragon_v1/ui/components/drawer-item.component.dart';
 import 'package:digital_dragon_v1/ui/resources/master_icons_icons.dart';
+import 'package:digital_dragon_v1/ui/screens/anotations/anotations.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/hook.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/characters/campaign-characters.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/home/campaign-home.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/monsters/campaign-monsters.screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:digital_dragon_v1/ui/screens/dices/dices.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/npc/npc.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/places/places.screen.dart';
 import 'package:flutter/material.dart';
 
 class Campaign extends StatefulWidget {
@@ -21,19 +22,37 @@ class Campaign extends StatefulWidget {
 
 class _CampaignState extends State<Campaign> {
   int _selectedIndex = 0;
+  int _selectedWidgetMenu = 0;
   late CampaignScreenModel _campaignModel;
   var _getCampaign;
   List<Widget>? _widgets = [];
   String? id;
+  GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
+  List<Widget> _renderWidgetsMenu = [];
+
+  Widget renderWidget(index) {
+    return _renderWidgetsMenu[index];
+  }
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    if (index == 3) {
+      _drawerKey.currentState?.openDrawer();
+    } else {
+      setState(() {
+        _selectedIndex = index;
+      });
+    }
   }
 
   getCampaign(id) async {
     _campaignModel = await getCampaignInfo(id);
+
+    _renderWidgetsMenu = [
+      Npc(npcs: _campaignModel.npcs),
+      Places(places: _campaignModel.places),
+      Anotations(anotations: _campaignModel.notes),
+      const Dices(),
+    ];
 
     return <Widget>[
       HomeCampaign(
@@ -43,6 +62,7 @@ class _CampaignState extends State<Campaign> {
       ),
       CharacterCampaign(characters: _campaignModel.characters),
       MonsterCampaign(monsters: _campaignModel.monsters),
+      renderWidget(_selectedWidgetMenu),
     ];
   }
 
@@ -74,52 +94,97 @@ class _CampaignState extends State<Campaign> {
           _widgets = snapshot.data as List<Widget>?;
 
           return Scaffold(
+            key: _drawerKey,
             body: _widgets!.elementAt(_selectedIndex),
+            drawer: Drawer(
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    DrawerItem(
+                      description: "NPCs",
+                      icon: MasterIcons.npc_icon,
+                      onClick: () {
+                        setState(() {
+                          _selectedWidgetMenu = 0;
+                          _selectedIndex = 3;
+                          _drawerKey.currentState?.openEndDrawer();
+                        });
+                      },
+                    ),
+                    DrawerItem(
+                      description: "Locais",
+                      icon: MasterIcons.places_icon,
+                      onClick: () {
+                        setState(() {
+                          _selectedWidgetMenu = 1;
+                          _selectedIndex = 3;
+                          _drawerKey.currentState?.openEndDrawer();
+                        });
+                      },
+                    ),
+                    DrawerItem(
+                      description: "Notas",
+                      icon: MasterIcons.notes_icon,
+                      onClick: () {
+                        setState(() {
+                          _selectedWidgetMenu = 2;
+                          _selectedIndex = 3;
+                          _drawerKey.currentState?.openEndDrawer();
+                        });
+                      },
+                    ),
+                    DrawerItem(
+                      description: "Dados",
+                      icon: MasterIcons.dices_icon,
+                      onClick: () {
+                        setState(() {
+                          _selectedWidgetMenu = 3;
+                          _selectedIndex = 3;
+                          _drawerKey.currentState?.openEndDrawer();
+                        });
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            ),
             bottomNavigationBar: BottomNavigationBar(
-              items: <BottomNavigationBarItem>[
+              showSelectedLabels: false,
+              currentIndex: _selectedIndex,
+              selectedItemColor: ColorsApp.kPrimaryColor,
+              unselectedItemColor: ColorsApp.kBlack,
+              onTap: _onItemTapped,
+              elevation: 1,
+              iconSize: 22,
+              items: const <BottomNavigationBarItem>[
                 BottomNavigationBarItem(
                     icon: Icon(
                       MasterIcons.home_icon,
-                      size: 18,
-                      color: _selectedIndex == 0
-                          ? ColorsApp.kPrimaryColor
-                          : ColorsApp.kBlack,
                     ),
                     label: "Home"),
                 BottomNavigationBarItem(
                     icon: Icon(
                       MasterIcons.character_icon,
-                      size: 18,
-                      color: _selectedIndex == 1
-                          ? ColorsApp.kPrimaryColor
-                          : ColorsApp.kBlack,
                     ),
                     label: "Personagem"),
                 BottomNavigationBarItem(
                     icon: Icon(
                       MasterIcons.monster_icon,
-                      size: 18,
-                      color: _selectedIndex == 2
-                          ? ColorsApp.kPrimaryColor
-                          : ColorsApp.kBlack,
                     ),
                     label: "Monstros"),
                 BottomNavigationBarItem(
                     icon: Icon(
                       MasterIcons.menu_icon,
-                      size: 18,
-                      color: _selectedIndex == 3
-                          ? ColorsApp.kPrimaryColor
-                          : ColorsApp.kBlack,
                     ),
                     label: "Menu"),
               ],
-              currentIndex: _selectedIndex,
-              selectedItemColor: ColorsApp.kPrimaryColor,
-              onTap: _onItemTapped,
-              elevation: 1,
             ),
-            floatingActionButton: _selectedIndex == 1 || _selectedIndex == 2
+            floatingActionButton: _selectedIndex == 1 ||
+                    _selectedIndex == 2 ||
+                    (_selectedIndex == 3 && _selectedWidgetMenu != 3)
                 ? FloatingActionButton(
                     onPressed: () {
                       Navigator.pushNamed(context, Routes.createCampaign);

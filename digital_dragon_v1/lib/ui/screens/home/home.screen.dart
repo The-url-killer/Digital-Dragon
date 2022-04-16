@@ -8,7 +8,6 @@ import 'package:digital_dragon_v1/ui/resources/app_icons.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/home-master/home-master.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/home-player/home-player.screen.dart';
 import 'package:digital_dragon_v1/context/globals.dart' as globals;
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatefulWidget {

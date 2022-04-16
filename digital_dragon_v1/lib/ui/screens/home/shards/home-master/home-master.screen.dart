@@ -4,7 +4,6 @@ import 'package:digital_dragon_v1/constants/type_home_screen.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.component.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/create-button/create-button.component.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/context/globals.dart' as globals;
 

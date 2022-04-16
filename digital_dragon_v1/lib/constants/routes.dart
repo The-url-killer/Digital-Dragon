@@ -13,4 +13,7 @@ class Routes {
   static const lore = "/lore";
   static const friends = "/friends";
   static const anotations = "/anotations";
+  static const npc = "/npcs";
+  static const places = "/places";
+  static const dices = "/dices";
 }

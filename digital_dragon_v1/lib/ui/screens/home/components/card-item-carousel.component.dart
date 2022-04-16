@@ -3,7 +3,6 @@ import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_home_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CardItemCarousel extends StatelessWidget {
@@ -23,7 +22,6 @@ class CardItemCarousel extends StatelessWidget {
   final String navigateTo;
 
   handleClickCard(BuildContext context) {
-    print(id);
     if (navigateTo == TypeHome.MASTER) {
       Navigator.pushNamed(context, Routes.campaign, arguments: id);
     } else if (navigateTo == TypeHome.PLAYER) {

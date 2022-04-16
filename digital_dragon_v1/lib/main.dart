@@ -1,7 +1,11 @@
+import 'package:digital_dragon_v1/ui/screens/anotations/anotations.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/campaign.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/create-campaign/create-campaign.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/create-character/create-character.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/dices/dices.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/home/home.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/npc/npc.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/places/places.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/sign-up/sign-up.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/signin/signin.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/start/start.screen.dart';
