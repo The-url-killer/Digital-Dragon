@@ -2,7 +2,7 @@ import 'campaign-character-representation.model.dart';
 import 'campaign-place-representation.model.dart';
 
 class CampaignScreenModel {
-
+  String id;
   List<CampaignCharacterModel> characters;
   String image;
   String lore;
@@ -14,6 +14,7 @@ class CampaignScreenModel {
   List<CampaignPlaceModel> places;
 
   CampaignScreenModel({
+    required this.id,
     required this.characters,
     required this.image,
     required this.lore,
@@ -24,5 +25,4 @@ class CampaignScreenModel {
     required this.npcs,
     required this.places,
   });
-
 }

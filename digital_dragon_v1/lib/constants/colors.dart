@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 class ColorsApp {
   static const kPrimaryColor = Color.fromRGBO(112, 7, 246, 1.0);
+  static const kPrimaryColor07 = Color.fromRGBO(112, 7, 246, 0.7);
   static const kOverlayStart = Color.fromRGBO(112, 7, 246, 0.25);
   static const kLightPurple = Color.fromRGBO(197, 190, 216, 1);
   static const kBlack = Color.fromRGBO(0, 0, 0, 1.0);

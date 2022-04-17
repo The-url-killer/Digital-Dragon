@@ -113,6 +113,7 @@ class _CampaignState extends State<Campaign> {
                           _drawerKey.currentState?.openEndDrawer();
                         });
                       },
+                      isSelected: _selectedWidgetMenu == 0,
                     ),
                     DrawerItem(
                       description: "Locais",
@@ -124,6 +125,7 @@ class _CampaignState extends State<Campaign> {
                           _drawerKey.currentState?.openEndDrawer();
                         });
                       },
+                      isSelected: _selectedWidgetMenu == 1,
                     ),
                     DrawerItem(
                       description: "Notas",
@@ -135,6 +137,7 @@ class _CampaignState extends State<Campaign> {
                           _drawerKey.currentState?.openEndDrawer();
                         });
                       },
+                      isSelected: _selectedWidgetMenu == 2,
                     ),
                     DrawerItem(
                       description: "Dados",
@@ -146,6 +149,7 @@ class _CampaignState extends State<Campaign> {
                           _drawerKey.currentState?.openEndDrawer();
                         });
                       },
+                      isSelected: _selectedWidgetMenu == 3,
                     ),
                   ],
                 ),

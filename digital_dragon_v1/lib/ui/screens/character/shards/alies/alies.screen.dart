@@ -1,36 +1,38 @@
 import 'package:digital_dragon_v1/model/campaign-character-representation.model.dart';
 import 'package:digital_dragon_v1/ui/components/character.component.dart';
 import 'package:digital_dragon_v1/ui/screens/info/info.screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class Npc extends StatefulWidget {
-  Npc({Key? key, required this.npcs}) : super(key: key);
+class Alies extends StatefulWidget {
+  Alies({Key? key, required this.alies}) : super(key: key);
 
-  List<CampaignCharacterModel> npcs;
+  List<CampaignCharacterModel> alies;
 
   @override
-  State<Npc> createState() => _NpcState();
+  State<Alies> createState() => _AliesState();
 }
 
-class _NpcState extends State<Npc> {
+class _AliesState extends State<Alies> {
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: widget.npcs
-              .map((npc) => InkWell(
+          children: widget.alies
+              .map((ally) => InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => Info(character: npc),
+                        builder: (_) => Info(character: ally),
                       ),
                     );
                   },
-                  child: Character(character: npc)))
+                  child: Character(character: ally)))
               .toList(),
         ));
+    ;
   }
 }

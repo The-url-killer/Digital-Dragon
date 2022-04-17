@@ -4,6 +4,7 @@ import 'package:digital_dragon_v1/model/campaign-screen-representation.model.dar
 
 getCampaignInfo(id) {
   return CampaignScreenModel(
+    id: "NDJNVKOADNVKODANKOVNADKONVADNVKOADNKVOADNOJVNADJOVNANVOJDANBVJODANOJVNADIJ",
     image:
         "https://i.pinimg.com/564x/59/65/f3/5965f35451361de3855bf90187f0a64e.jpg",
     lore:

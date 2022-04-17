@@ -3,34 +3,34 @@ import 'package:digital_dragon_v1/ui/components/character.component.dart';
 import 'package:digital_dragon_v1/ui/screens/info/info.screen.dart';
 import 'package:flutter/material.dart';
 
-class Npc extends StatefulWidget {
-  Npc({Key? key, required this.npcs}) : super(key: key);
+class PetsScreen extends StatefulWidget {
+  PetsScreen({Key? key, required this.pets}) : super(key: key);
 
-  List<CampaignCharacterModel> npcs;
+  List<CampaignCharacterModel> pets;
 
   @override
-  State<Npc> createState() => _NpcState();
+  State<PetsScreen> createState() => _PetsScreenState();
 }
 
-class _NpcState extends State<Npc> {
+class _PetsScreenState extends State<PetsScreen> {
   @override
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: widget.npcs
-              .map((npc) => InkWell(
+          children: widget.pets
+              .map((pet) => InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => Info(character: npc),
+                        builder: (_) => Info(character: pet),
                       ),
                     );
                   },
-                  child: Character(character: npc)))
+                  child: Character(character: pet)))
               .toList(),
-        ));
+        ));;
   }
 }
