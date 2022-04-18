@@ -1,6 +1,7 @@
 import 'dart:core';
 
 import 'package:digital_dragon_v1/constants/colors.dart';
+import 'package:digital_dragon_v1/hooks/use-user.hook.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/model/character-representation.model.dart';
 import 'package:digital_dragon_v1/model/user-data.model.dart';
@@ -31,6 +32,8 @@ class _HomeState extends State<Home> {
   }
 
   Future<List<Widget>> getUser() async {
+    dynamic user = await getUserInfos(email: globals.email);
+    print(user);
     globals.userData = UserData(
         email: 'diulianovargas@gmail.com',
         name: 'Diuliano Vargas',
@@ -97,6 +100,15 @@ class _HomeState extends State<Home> {
     return FutureBuilder(
         future: _getUser,
         builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(
+                  color: ColorsApp.kPrimaryColor,
+                ),
+              ),
+            );
+          }
           if (snapshot.hasData) {
             _widgetOptions = snapshot.data as List<Widget>?;
           }

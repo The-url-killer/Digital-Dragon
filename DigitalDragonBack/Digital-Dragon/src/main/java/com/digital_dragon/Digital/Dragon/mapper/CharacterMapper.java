@@ -24,6 +24,7 @@ public class CharacterMapper {
         character.put("lore", createCharacterRequest.getLore());
         character.put("race", createCharacterRequest.getRace());
         character.put("_class", createCharacterRequest.get_class());
+        character.put("user", createCharacterRequest.getEmail());
 
         return character;
     }

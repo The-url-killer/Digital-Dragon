@@ -4,6 +4,7 @@ import com.digital_dragon.Digital.Dragon.mapper.UserMapper;
 import com.digital_dragon.Digital.Dragon.models.User;
 import com.digital_dragon.Digital.Dragon.representation.request.CreateUserRequest;
 import com.digital_dragon.Digital.Dragon.representation.request.LoginRequest;
+import com.digital_dragon.Digital.Dragon.representation.response.UserInfosResponse;
 import com.google.api.core.ApiFuture;
 import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.DocumentSnapshot;
@@ -13,6 +14,8 @@ import com.google.firebase.cloud.FirestoreClient;
 import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ExecutionException;
+
+import static com.digital_dragon.Digital.Dragon.mapper.UserMapper.userModelToUserInfosResponse;
 
 @Service
 public class UserService {
@@ -53,6 +56,12 @@ public class UserService {
     }
 
     return documentSnapshot.toObject(User.class);
+  }
+
+  public UserInfosResponse getuserInfos(String email) throws ExecutionException, InterruptedException {
+    var user = getUser(email);
+
+    return userModelToUserInfosResponse(user);
   }
 
   public void saveUser(User user) throws ExecutionException, InterruptedException {

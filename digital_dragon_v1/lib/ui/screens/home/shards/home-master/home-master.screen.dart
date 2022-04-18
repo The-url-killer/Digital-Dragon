@@ -4,6 +4,7 @@ import 'package:digital_dragon_v1/constants/type_home_screen.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.component.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/create-button/create-button.component.dart';
+import 'package:digital_dragon_v1/ui/screens/user/user.screen.dart';
 import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/context/globals.dart' as globals;
 
@@ -21,9 +22,15 @@ class _MasterHomeState extends State<MasterHome> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        CircleAvatar(
-          backgroundImage: NetworkImage(globals.userData.image),
-          radius: 35,
+        InkWell(
+          onTap: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (_) => UserScreen()));
+          },
+          child: CircleAvatar(
+            backgroundImage: NetworkImage(globals.userData.image),
+            radius: 35,
+          ),
         ),
         CarouselSlider(
           options: CarouselOptions(
