@@ -102,11 +102,6 @@ createMonster({name, image, id, lore, level, aClass}) async {
   return response.data;
 }
 
-createNpc({name, image, id, lore, level, aclass}) async {
-  Response<dynamic> response = await Dio().post(BaseUrl.baseUrl + "/create-npc",
-      data: {name, image, id, lore, level});
-  return response.data;
-}
 
 createItem(
     {name,

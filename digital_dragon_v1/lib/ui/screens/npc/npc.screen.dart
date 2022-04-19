@@ -17,20 +17,26 @@ class _NpcState extends State<Npc> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: widget.npcs
-              .map((npc) => InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => Info(character: npc),
-                      ),
-                    );
-                  },
-                  child: Character(character: npc)))
-              .toList(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: widget.npcs
+                    .map((npc) => InkWell(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => Info(character: npc),
+                            ),
+                          );
+                        },
+                        child: Character(character: npc)))
+                    .toList(),
+              ),
+            ],
+          ),
         ));
   }
 }

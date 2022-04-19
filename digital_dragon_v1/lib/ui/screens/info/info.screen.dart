@@ -57,15 +57,18 @@ class _InfoState extends State<Info> {
                 Navigator.pop(context);
               },
               child: Container(
-                height: 40,
-                width: 40,
+                height: 30,
+                width: 30,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(15),
                   color: ColorsApp.kWhite05,
                 ),
-                child: const Icon(
-                  Icons.arrow_back_ios,
-                  size: 20,
+                padding: const EdgeInsets.all(5),
+                child: const Center(
+                  child:  Icon(
+                    Icons.close,
+                    size: 20,
+                  ),
                 ),
               ),
             ),

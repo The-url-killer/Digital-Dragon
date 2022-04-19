@@ -85,7 +85,11 @@ class _SignInState extends State<SignIn> {
                   child: const Center(child: Text("Entrar", style: titleStyle)),
                 ),
                 Input(controller: userController, hint: "Usuario:"),
-                Input(controller: passController, hint: "Senha:"),
+                Input(
+                  controller: passController,
+                  hint: "Senha:",
+                  password: true,
+                ),
                 const SizedBox(height: 45),
                 Link(content: "Esqueci minha senha", onClick: handleClickLink),
                 const SizedBox(height: 48),

@@ -5,13 +5,14 @@ import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:flutter/material.dart';
 
 class Input extends StatelessWidget {
-  Input({Key? key, required controller, required String hint})
+  Input({Key? key, required controller, required String hint, this.password = false})
       : controller = controller,
         hint = hint,
         super(key: key);
 
   TextEditingController controller;
   String hint;
+  bool password;
 
   late dynamic style = InputDecoration(
     hintText: hint,
@@ -32,6 +33,7 @@ class Input extends StatelessWidget {
     return TextFormField(
       controller: controller,
       decoration: style,
+      obscureText: password,
     );
   }
 }

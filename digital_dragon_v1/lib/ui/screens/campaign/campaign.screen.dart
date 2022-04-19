@@ -9,6 +9,7 @@ import 'package:digital_dragon_v1/ui/screens/anotations/create-note.screen.dart'
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/characters/campaign-characters.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/home/campaign-home.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/monsters/campaign-monsters.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/character/shards/alies/add-alies.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/dices/dices.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/npc/npc.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/places/places.screen.dart';
@@ -190,6 +191,9 @@ class _CampaignState extends State<Campaign> {
                 ? FloatingActionButton(
                     onPressed: () {
                       if (_selectedIndex == 3) {
+                        if (_selectedWidgetMenu == 0) {
+                          Navigator.push(context, MaterialPageRoute(builder: (_) => AddAliesScreen(id: widget.id, type: "npc",)));
+                        }
                         if (_selectedWidgetMenu == 2) {
                           Navigator.push(
                               context,

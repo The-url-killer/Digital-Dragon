@@ -1,6 +1,8 @@
 import 'package:digital_dragon_v1/model/campaign-character-representation.model.dart';
 import 'package:digital_dragon_v1/ui/components/character.component.dart';
+import 'package:digital_dragon_v1/ui/screens/info/info.screen.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class MonsterCampaign extends StatefulWidget {
   MonsterCampaign({Key? key, required this.monsters}) : super(key: key);
@@ -16,11 +18,24 @@ class _MonsterCampaignState extends State<MonsterCampaign> {
   Widget build(BuildContext context) {
     return Padding(
         padding: const EdgeInsets.all(20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: widget.monsters
-              .map((character) => Character(character: character))
-              .toList(),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: widget.monsters
+                .map(
+                  (character) => InkWell(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => Info(character: character),
+                          ),
+                        );
+                      },
+                      child: Character(character: character)),
+                )
+                .toList(),
+          ),
         ));
   }
 }

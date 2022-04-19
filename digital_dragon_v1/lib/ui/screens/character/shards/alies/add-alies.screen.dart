@@ -1,10 +1,10 @@
 import 'dart:math';
 
 import 'package:digital_dragon_v1/constants/colors.dart';
-import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_button.dart';
 import 'package:digital_dragon_v1/hooks/use-characters.hook.dart';
+import 'package:digital_dragon_v1/hooks/user-campaing.hook.dart';
 import 'package:digital_dragon_v1/ui/components/input-no-border/input-no-border.component.dart';
 import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
 import 'package:flutter/material.dart';
@@ -68,9 +68,10 @@ class _AddAliesScreenState extends State<AddAliesScreen> {
             "https://i.pinimg.com/564x/df/68/a0/df68a002fbf9186328ea24f147090618.jpg",
         id: widget.id,
         lore: loreController.text,
-        aclass: classController.text,
+        aClass: classController.text,
         level: Random().nextInt(20) + 1,
       );
+      Navigator.pop(context);
     }
 
     setState(() {
