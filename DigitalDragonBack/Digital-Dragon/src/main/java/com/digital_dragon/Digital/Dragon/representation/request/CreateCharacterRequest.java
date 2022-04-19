@@ -1,28 +1,28 @@
 package com.digital_dragon.Digital.Dragon.representation.request;
 
-import com.digital_dragon.Digital.Dragon.models.Class;
-import com.digital_dragon.Digital.Dragon.models.Race;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Map;
 
 @Getter
 @Setter
 public class CreateCharacterRequest {
-  private String email;
-  private String name;
-  private String tendecy;
-  private Integer age;
-  private Double heigth;
-  private Double size;
-  private String eyes;
-  private String peel;
-  private String hair;
+  private String classe;
+  private int age;
   private Map<String, Integer> atributes;
   private Map<String, Boolean> expertises;
-  private String lore;
+  private String name;
+  private String hair;
+  private double height;
+  private String peel;
   private String race;
-  private String _class;
+  private String image;
+  private String lore;
+  private String defects;
+  private String personalityTrails;
+  private String connections;
+  private String ideas;
+  private String tendency;
+  private String email;
 }

@@ -1,9 +1,10 @@
 package com.digital_dragon.Digital.Dragon.controller;
 
 import com.digital_dragon.Digital.Dragon.models.Campaing;
-import com.digital_dragon.Digital.Dragon.representation.CampaingResponse;
-import com.digital_dragon.Digital.Dragon.representation.request.CreateCampaignRequest;
+import com.digital_dragon.Digital.Dragon.representation.request.*;
+import com.digital_dragon.Digital.Dragon.representation.response.CampaingResponse;
 import com.digital_dragon.Digital.Dragon.services.CampaignService;
+import com.digital_dragon.Digital.Dragon.services.CharacterService;
 import com.google.cloud.firestore.WriteResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,8 @@ import java.util.concurrent.ExecutionException;
 public class CampaignController {
 
   @Autowired private CampaignService campaignService;
+  @Autowired private CharacterService characterService;
+
 
   @ResponseStatus(HttpStatus.CREATED)
   @PostMapping("/create")
@@ -27,15 +30,54 @@ public class CampaignController {
 
   @ResponseStatus(HttpStatus.OK)
   @GetMapping("/{id}")
-  public Campaing getCampaign(@PathVariable String id)
+  public CampaingResponse getCampaign(@PathVariable String id)
       throws ExecutionException, InterruptedException {
     return campaignService.getCampaign(id);
   }
 
   @ResponseStatus(HttpStatus.OK)
-  @GetMapping
-  public List<CampaingResponse> getAllCampaignsByID()
+  @GetMapping("/get-campaigns/{email}")
+  public List<CampaingResponse> getAllCampaignsByID(@PathVariable String email)
       throws ExecutionException, InterruptedException {
-    return campaignService.getAllCampaingByEmail("diulinho@rei.delas");
+    return campaignService.getAllCampaingByEmail(email);
   }
+
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping("/create-monster")
+  public String createMonster(@RequestBody CreateMonsterRequest campaing)
+      throws ExecutionException, InterruptedException {
+    campaignService.createMonster(campaing);
+    return "KLPVADNKPVNDAKPVNAPK";
+  }
+
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping("/create-npc")
+  public String createNpc(@RequestBody CreateNpcRequest campaing)
+          throws ExecutionException, InterruptedException {
+    campaignService.createNpc(campaing);
+    return "KLPVADNKPVNDAKPVNAPK";
+  }
+
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping("/create-note")
+  public String getMonsters(@RequestBody CreateNoteRequest note)
+          throws ExecutionException, InterruptedException {
+    if (note.getType().equals("campaign")) {
+      campaignService.createNote(note);
+    } else {
+      characterService.createNote(note);
+    }
+
+    return "madonkdan";
+  }
+
+  @ResponseStatus(HttpStatus.CREATED)
+  @PostMapping("/create-place")
+  public String getPlace(@RequestBody CreatePlaceRequest placeRequest)
+          throws ExecutionException, InterruptedException {
+    campaignService.createPlace(placeRequest);
+
+    return "madonkdan";
+  }
+
 }

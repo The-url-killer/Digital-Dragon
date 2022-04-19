@@ -15,5 +15,5 @@ public class Campaing implements Serializable {
   private List<Character> characters;
   private List<Monster> monsters;
   private List<Places> places;
-  private String notes;
+  private List<String> notes;
 }
