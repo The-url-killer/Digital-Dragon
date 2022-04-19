@@ -12,7 +12,7 @@ import 'package:flutter/material.dart';
 class HomePlayer extends StatelessWidget {
   const HomePlayer({Key? key, required this.characters}) : super(key: key);
 
-  final List<CharacterModel> characters;
+  final List<dynamic> characters;
 
   dynamic renderText() {
     if (globals.userData.image == "") {

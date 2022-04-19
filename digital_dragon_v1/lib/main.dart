@@ -42,7 +42,6 @@ class MyApp extends StatelessWidget {
               Routes.home: (context) => const Home(),
               Routes.createCampaign: (context) => const CreateCampaign(),
               Routes.createCharacter: (context) => const CreateCharacter(),
-              Routes.campaign: (context) => const Campaign(),
             },
             home: const Scaffold(
               body: Start(

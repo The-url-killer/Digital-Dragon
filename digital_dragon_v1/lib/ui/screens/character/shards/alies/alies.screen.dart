@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class Alies extends StatefulWidget {
   Alies({Key? key, required this.alies}) : super(key: key);
 
-  List<CampaignCharacterModel> alies;
+  List<dynamic> alies;
 
   @override
   State<Alies> createState() => _AliesState();

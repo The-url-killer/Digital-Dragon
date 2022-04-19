@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class PetsScreen extends StatefulWidget {
   PetsScreen({Key? key, required this.pets}) : super(key: key);
 
-  List<CampaignCharacterModel> pets;
+  List<dynamic> pets;
 
   @override
   State<PetsScreen> createState() => _PetsScreenState();

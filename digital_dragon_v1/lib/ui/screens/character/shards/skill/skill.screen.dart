@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class SkillScreen extends StatefulWidget {
   SkillScreen({Key? key, required this.skills}) : super(key: key);
 
-  List<Skill> skills;
+  List<dynamic> skills;
 
   @override
   State<SkillScreen> createState() => _SkillScreenState();

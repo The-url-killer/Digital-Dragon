@@ -8,7 +8,7 @@ class ItensScreen extends StatefulWidget {
   ItensScreen({Key? key, required this.itens, required this.money})
       : super(key: key);
 
-  List<Item> itens;
+  List<dynamic> itens;
   Map<String, int> money;
 
   @override

@@ -1,4 +1,5 @@
 import 'package:digital_dragon_v1/constants/font_size.dart';
+import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeCampaign extends StatefulWidget {
@@ -25,6 +26,7 @@ class _HomeCampaignState extends State<HomeCampaign> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(width: Sizes.width(context) -80),
           SizedBox(
             height: 270,
             width: 250,

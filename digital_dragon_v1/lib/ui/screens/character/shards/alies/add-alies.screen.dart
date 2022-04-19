@@ -1,27 +1,34 @@
+import 'dart:math';
+
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_button.dart';
-import 'package:digital_dragon_v1/hooks/user-campaing.hook.dart';
+import 'package:digital_dragon_v1/hooks/use-characters.hook.dart';
 import 'package:digital_dragon_v1/ui/components/input-no-border/input-no-border.component.dart';
 import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:digital_dragon_v1/context/globals.dart' as globals;
 
-class CreateCampaign extends StatefulWidget {
-  const CreateCampaign({Key? key}) : super(key: key);
+class AddAliesScreen extends StatefulWidget {
+  AddAliesScreen({Key? key, required this.id, required this.type})
+      : super(key: key);
+
+  String id;
+  String type;
 
   @override
-  _CreateCampaignState createState() => _CreateCampaignState();
+  State<AddAliesScreen> createState() => _AddAliesScreenState();
 }
 
-class _CreateCampaignState extends State<CreateCampaign> {
+class _AddAliesScreenState extends State<AddAliesScreen> {
   final ImagePicker _picker = ImagePicker();
-  XFile? _image;
   TextEditingController imageController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController loreController = TextEditingController();
+  TextEditingController classController = TextEditingController();
+  dynamic _image;
+
   bool isLoading = false;
 
   handleClick() async {
@@ -36,17 +43,40 @@ class _CreateCampaignState extends State<CreateCampaign> {
     setState(() {
       isLoading = true;
     });
-    await createCampaign(
-      name: nameController.text,
-      image:
-          "https://i.pinimg.com/564x/cd/38/23/cd3823dfc2a2a83bdfe90a66f2aa64cc.jpg",
-      email: globals.userData.email,
-      history: loreController.text,
-    );
+    if (widget.type == "monster") {
+      await createMonster(
+        name: nameController.text,
+        image:
+            "https://i.pinimg.com/564x/df/68/a0/df68a002fbf9186328ea24f147090618.jpg",
+        id: widget.id,
+        lore: loreController.text,
+        aClass: classController.text,
+        level: Random().nextInt(20) + 1,
+      );
+    } else if (widget.type == "place") {
+      await craetePlace(
+        name: nameController.text,
+        image:
+            "https://i.pinimg.com/564x/cf/3a/19/cf3a19bcbd8eaad59be9f1d02044eb33.jpg",
+        id: widget.id,
+        lore: loreController.text,
+      );
+    } else if (widget.type == "npc") {
+      await createNpc(
+        name: nameController.text,
+        image:
+            "https://i.pinimg.com/564x/df/68/a0/df68a002fbf9186328ea24f147090618.jpg",
+        id: widget.id,
+        lore: loreController.text,
+        aclass: classController.text,
+        level: Random().nextInt(20) + 1,
+      );
+    }
+
     setState(() {
       isLoading = false;
     });
-    Navigator.pushNamed(context, Routes.home);
+    Navigator.pop(context);
   }
 
   var boxDecoration = const BoxDecoration(
@@ -90,6 +120,13 @@ class _CreateCampaignState extends State<CreateCampaign> {
             );
     }
 
+    renderClass() {
+      if (widget.type == "place") {
+        return const SizedBox(height: 0);
+      }
+      return InputNoBorder(controller: classController, hint: "Classe");
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(8),
@@ -103,7 +140,7 @@ class _CreateCampaignState extends State<CreateCampaign> {
                 controller: nameController, hint: 'Digite o nome da campanha'),
             TextFormField(
               controller: loreController,
-              maxLines: 10,
+              maxLines: 3,
               decoration: const InputDecoration(
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(8)),
@@ -112,6 +149,7 @@ class _CreateCampaignState extends State<CreateCampaign> {
                   hintText: 'Nos conte sobre  a  sua campanha',
                   hintStyle: TextStyle(color: ColorsApp.kPrimaryColor)),
             ),
+            renderClass(),
             const SizedBox(height: 20),
             SizedBox(
               width: Sizes.width(context) * .4,

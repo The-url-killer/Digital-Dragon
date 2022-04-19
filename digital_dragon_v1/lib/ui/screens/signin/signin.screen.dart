@@ -23,9 +23,17 @@ class _SignInState extends State<SignIn> {
   bool isLoading = false;
 
   handleClick() async {
+    setState(() {
+      isLoading = true;
+    });
+
     var response =
-        login(email: userController.text, password: passController.text);
+        await login(email: userController.text, password: passController.text);
     globals.email = userController.text;
+
+    setState(() {
+      isLoading = false;
+    });
 
     Navigator.of(context).pushNamed(Routes.home);
   }

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 class MonsterCampaign extends StatefulWidget {
   MonsterCampaign({Key? key, required this.monsters}) : super(key: key);
 
-  List<CampaignCharacterModel> monsters;
+  List<dynamic> monsters;
 
   @override
   State<MonsterCampaign> createState() => _MonsterCampaignState();

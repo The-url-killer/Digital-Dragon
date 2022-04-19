@@ -1,10 +1,11 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
+import 'package:digital_dragon_v1/hooks/user-campaing.hook.dart';
 import 'package:digital_dragon_v1/model/campaign-screen-representation.model.dart';
 import 'package:digital_dragon_v1/ui/components/drawer-item.component.dart';
 import 'package:digital_dragon_v1/ui/resources/master_icons_icons.dart';
 import 'package:digital_dragon_v1/ui/screens/anotations/anotations.screen.dart';
-import 'package:digital_dragon_v1/ui/screens/campaign/hook.dart';
+import 'package:digital_dragon_v1/ui/screens/anotations/create-note.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/characters/campaign-characters.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/home/campaign-home.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/shards/monsters/campaign-monsters.screen.dart';
@@ -14,7 +15,9 @@ import 'package:digital_dragon_v1/ui/screens/places/places.screen.dart';
 import 'package:flutter/material.dart';
 
 class Campaign extends StatefulWidget {
-  const Campaign({Key? key}) : super(key: key);
+  Campaign({Key? key, required this.id}) : super(key: key);
+
+  String id;
 
   @override
   State<Campaign> createState() => _CampaignState();
@@ -26,7 +29,6 @@ class _CampaignState extends State<Campaign> {
   late CampaignScreenModel _campaignModel;
   var _getCampaign;
   List<Widget>? _widgets = [];
-  String? id;
   GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
   List<Widget> _renderWidgetsMenu = [];
 
@@ -44,8 +46,8 @@ class _CampaignState extends State<Campaign> {
     }
   }
 
-  getCampaign(id) async {
-    _campaignModel = await getCampaignInfo(id);
+  getCampaign() async {
+    _campaignModel = await getCampaignInfo(id: widget.id);
 
     _renderWidgetsMenu = [
       Npc(npcs: _campaignModel.npcs),
@@ -70,17 +72,13 @@ class _CampaignState extends State<Campaign> {
   void initState() {
     super.initState();
 
-    if (id != null) {
-      _getCampaign = getCampaign(id);
-    }
+    _getCampaign = getCampaign();
   }
 
   @override
   Widget build(BuildContext context) {
-    id = ModalRoute.of(context)!.settings.arguments as String;
-
     return FutureBuilder(
-        future: getCampaign(id),
+        future: getCampaign(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return const Scaffold(
@@ -191,7 +189,15 @@ class _CampaignState extends State<Campaign> {
                     (_selectedIndex == 3 && _selectedWidgetMenu != 3)
                 ? FloatingActionButton(
                     onPressed: () {
-                      Navigator.pushNamed(context, Routes.createCampaign);
+                      if (_selectedIndex == 3) {
+                        if (_selectedWidgetMenu == 2) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => CreateNote(
+                                      id: widget.id, type: "campaign")));
+                        }
+                      }
                     },
                     backgroundColor: ColorsApp.kPrimaryColor,
                     child: const Icon(Icons.add),

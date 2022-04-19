@@ -39,7 +39,7 @@ CharacterModelScreen getCharacterInfo(id) {
       level: 1,
       money: {"po": 0, "pl": 1, "pp": 10, "pc": 100, "pe": 0},
       hair: "longos mas sem nada em cima",
-      heigth: 1.35,
+      height: 1.35,
       tendency: "Leal Bom",
       name: "Cleber",
       peel: "Branca",
@@ -200,5 +200,5 @@ CharacterModelScreen getCharacterInfo(id) {
           lore:
               "Está cordilheira é famosa por abrigar centenas de elfos expurgados pelo rei Ivril do reino de Armuned",
         ),
-      ]);
+      ], user: '');
 }

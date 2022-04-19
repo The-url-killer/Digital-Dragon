@@ -1,17 +1,14 @@
-import 'campaign-character-representation.model.dart';
-import 'campaign-place-representation.model.dart';
-
 class CampaignScreenModel {
   String id;
-  List<CampaignCharacterModel> characters;
+  List<dynamic> characters;
   String image;
   String lore;
   String master;
-  List<CampaignCharacterModel> monsters;
+  List<dynamic> monsters;
   String name;
-  List<String> notes;
-  List<CampaignCharacterModel> npcs;
-  List<CampaignPlaceModel> places;
+  List<dynamic> notes;
+  List<dynamic> npcs;
+  List<dynamic> places;
 
   CampaignScreenModel({
     required this.id,

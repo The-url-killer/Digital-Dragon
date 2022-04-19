@@ -1,7 +1,10 @@
 import 'dart:core';
 
+import 'package:digital_dragon_v1/constants/base_url.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
+import 'package:digital_dragon_v1/hooks/use-characters.hook.dart';
 import 'package:digital_dragon_v1/hooks/use-user.hook.dart';
+import 'package:digital_dragon_v1/hooks/user-campaing.hook.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/model/character-representation.model.dart';
 import 'package:digital_dragon_v1/model/user-data.model.dart';
@@ -20,66 +23,37 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
-  List<CharacterModel> characters = [];
-  List<CampaignModel> campaigns = [];
+  List<dynamic> characters = [];
+  List<dynamic> campaigns = [];
   var _getUser;
 
   @override
   void initState() {
     super.initState();
-
     _getUser = getUser();
   }
 
   Future<List<Widget>> getUser() async {
-    dynamic user = await getUserInfos(email: globals.email);
-    print(user);
-    globals.userData = UserData(
-        email: 'diulianovargas@gmail.com',
-        name: 'Diuliano Vargas',
-        image:
-            'https://i.pinimg.com/236x/de/39/6d/de396dfe059d817621a3788cd85fadeb.jpg');
+    globals.userData = await getUserInfos(email: globals.email);
 
-    characters = [
-      CharacterModel(
-        id: "amvuinhad9u0n",
-        image:
-            "https://i.pinimg.com/236x/2c/79/45/2c794530c89045e526b5243663a34e7c.jpg",
-        name: "Bjorn",
-        campaign: "Ice Wind",
-      ),
-      CharacterModel(
-        id: "5135321532amvuinhad9u0n",
-        image:
-            "https://i.pinimg.com/236x/2c/79/45/2c794530c89045e526b5243663a34e7c.jpg",
-        name: "Cadian",
-      ),
-      CharacterModel(
-        id: "amfadfafaeevuinhad9u0n",
-        image:
-            "https://i.pinimg.com/236x/2c/79/45/2c794530c89045e526b5243663a34e7c.jpg",
-        name: "Renegardaaaaaa",
-        campaign: "Ice Windaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
-      ),
-    ];
+    var charactersResponse = await getCharacters(email: globals.email);
+    characters = charactersResponse
+        .map((character) => CharacterModel(
+              name: character["name"],
+              image: character["image"],
+              id: character["id"],
+              campaign: character["campaign"],
+            ))
+        .toList();
 
-    campaigns = [
-      CampaignModel(
-          id: "akdvmkoadmvkad",
-          name: "Ice Wind",
-          image:
-              "https://i.pinimg.com/236x/de/39/6d/de396dfe059d817621a3788cd85fadeb.jpg"),
-      CampaignModel(
-          id: "kamdkvadkvda",
-          name: "Veneguard",
-          image:
-              "https://i.pinimg.com/236x/de/39/6d/de396dfe059d817621a3788cd85fadeb.jpg"),
-      CampaignModel(
-          id: "kanmvkadkvodan",
-          name: "Classica",
-          image:
-              "https://i.pinimg.com/236x/de/39/6d/de396dfe059d817621a3788cd85fadeb.jpg")
-    ];
+    var campaignsResponse = await getCampaigns(email: globals.email);
+    campaigns = campaignsResponse
+        .map((campaign) => CampaignModel(
+              name: campaign["name"],
+              image: campaign["image"],
+              id: campaign["id"],
+            ))
+        .toList();
 
     return <Widget>[
       HomePlayer(characters: characters),

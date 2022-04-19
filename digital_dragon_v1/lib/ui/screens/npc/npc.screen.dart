@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class Npc extends StatefulWidget {
   Npc({Key? key, required this.npcs}) : super(key: key);
 
-  List<CampaignCharacterModel> npcs;
+  List<dynamic> npcs;
 
   @override
   State<Npc> createState() => _NpcState();

@@ -15,22 +15,23 @@ class CharacterModelScreen {
   Map<String, int> money;
   String campaign;
   Map<String, bool> expertises;
-  List<CampaignCharacterModel> alies;
-  List<CampaignCharacterModel> pets;
-  List<String> notes;
+  List<dynamic> alies;
+  List<dynamic> pets;
+  List<dynamic> notes;
   String lore;
   String defects;
   String personalityTrails;
   String connections;
   String ideas;
   String hair;
-  double heigth;
+  double height;
   String tendency;
   String name;
   String peel;
   String race;
-  List<Skill>? speels;
-  List<Item>? itens;
+  List<dynamic>? speels;
+  List<dynamic>? itens;
+  String user;
 
   CharacterModelScreen({
     required this.id,
@@ -43,10 +44,10 @@ class CharacterModelScreen {
     required this.level,
     required this.lifePoints,
     required this.speed,
-    this.campaign = '',
+    required this.campaign,
     required this.expertises,
     required this.hair,
-    required this.heigth,
+    required this.height,
     required this.tendency,
     required this.name,
     required this.alies,
@@ -59,7 +60,8 @@ class CharacterModelScreen {
     required this.ideas,
     required this.notes,
     required this.pets,
-    this.itens,
-    this.speels,
+    required this.itens,
+    required this.speels,
+    required this.user,
   });
 }

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 class Anotations extends StatefulWidget {
   Anotations({Key? key, required this.anotations}) : super(key: key);
 
-  List<String> anotations;
+  List<dynamic> anotations;
 
   @override
   State<Anotations> createState() => _AnotationsState();

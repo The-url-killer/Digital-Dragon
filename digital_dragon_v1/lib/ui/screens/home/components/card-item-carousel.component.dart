@@ -3,6 +3,7 @@ import 'package:digital_dragon_v1/constants/font_size.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_home_screen.dart';
+import 'package:digital_dragon_v1/ui/screens/campaign/campaign.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/character.screen.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ class CardItemCarousel extends StatelessWidget {
 
   handleClickCard(BuildContext context) {
     if (navigateTo == TypeHome.MASTER) {
-      Navigator.pushNamed(context, Routes.campaign, arguments: id);
+      Navigator.push(context, MaterialPageRoute(builder: (_) => Campaign(id: id)));
     } else if (navigateTo == TypeHome.PLAYER) {
       Navigator.push(
           context, MaterialPageRoute(builder: (_) => CharacterScreen(id: id)));

@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 class Places extends StatefulWidget {
   Places({Key? key, required this.places}) : super(key: key);
 
-  List<CampaignPlaceModel> places;
+  List<dynamic> places;
 
   @override
   State<Places> createState() => _PlacesState();

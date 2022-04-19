@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_home_screen.dart';
-import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.component.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/create-button/create-button.component.dart';
 import 'package:digital_dragon_v1/ui/screens/user/user.screen.dart';
@@ -10,13 +9,14 @@ import 'package:digital_dragon_v1/context/globals.dart' as globals;
 
 class MasterHome extends StatefulWidget {
   const MasterHome({Key? key, required this.campaigns}) : super(key: key);
-  final List<CampaignModel> campaigns;
+  final List<dynamic> campaigns;
 
   @override
   State<MasterHome> createState() => _MasterHomeState();
 }
 
 class _MasterHomeState extends State<MasterHome> {
+  
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -1,12 +1,12 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
-import 'package:digital_dragon_v1/model/campaign-screen-representation.model.dart';
+import 'package:digital_dragon_v1/hooks/use-characters.hook.dart';
 import 'package:digital_dragon_v1/model/character-model-screen-representation.model.dart';
 import 'package:digital_dragon_v1/ui/components/drawer-item.component.dart';
 import 'package:digital_dragon_v1/ui/resources/character_icon_icons.dart';
 import 'package:digital_dragon_v1/ui/resources/master_icons_icons.dart';
 import 'package:digital_dragon_v1/ui/screens/anotations/anotations.screen.dart';
-import 'package:digital_dragon_v1/ui/screens/character/hook.dart';
+import 'package:digital_dragon_v1/ui/screens/character/shards/alies/add-alies.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/alies/alies.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/character-home/character-home.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/itens/itens.screen.dart';
@@ -56,7 +56,7 @@ class _CharacterScreenState extends State<CharacterScreen> {
   }
 
   getCharacter() async {
-    _characterModel = await getCharacterInfo(widget.id);
+    _characterModel = await getCharactersInfo(id: widget.id);
 
     _renderWidgetsMenu = [
       PersonalityTraces(
@@ -212,7 +212,13 @@ class _CharacterScreenState extends State<CharacterScreen> {
                       _selectedIndex == 3)
               ? FloatingActionButton(
                   onPressed: () {
-                    Navigator.pushNamed(context, Routes.createCampaign);
+                    if (_selectedIndex == 3) {
+                      switch(_selectedWidgetMenu) {
+                        case 2:
+                          Navigator.push(_, MaterialPageRoute(builder: (_) => AddAliesScreen(id: widget.id, type: "Allies")));
+                          break;
+                      }
+                    }
                   },
                   backgroundColor: ColorsApp.kPrimaryColor,
                   child: const Icon(Icons.add),

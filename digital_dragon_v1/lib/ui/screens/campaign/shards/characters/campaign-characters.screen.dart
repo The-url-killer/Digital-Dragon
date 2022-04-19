@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 class CharacterCampaign extends StatefulWidget {
   CharacterCampaign({Key? key, required this.characters}) : super(key: key);
 
-  List<CampaignCharacterModel> characters;
+  List<dynamic> characters;
 
   @override
   State<CharacterCampaign> createState() => _CharacterCampaignState();
