@@ -6,9 +6,11 @@ import 'package:digital_dragon_v1/ui/components/drawer-item.component.dart';
 import 'package:digital_dragon_v1/ui/resources/character_icon_icons.dart';
 import 'package:digital_dragon_v1/ui/resources/master_icons_icons.dart';
 import 'package:digital_dragon_v1/ui/screens/anotations/anotations.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/anotations/create-note.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/alies/add-alies.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/alies/alies.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/character-home/character-home.screen.dart';
+import 'package:digital_dragon_v1/ui/screens/character/shards/create-item/create-item.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/itens/itens.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/peronality-traces/personality-traces.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/character/shards/pets/pets.screen.dart';
@@ -83,6 +85,21 @@ class _CharacterScreenState extends State<CharacterScreen> {
     ];
 
     return "heloo";
+  }
+
+  renderFloating() {
+    if (_selectedIndex == 1) {
+      return true;
+    } else if (_selectedIndex == 2) {
+      return true;
+    } else if (_selectedIndex == 3) {
+      if (_selectedWidgetMenu == 0 || _selectedWidgetMenu == 3) {
+        return false;
+      }
+      return true;
+    } else {
+      return false;
+    }
   }
 
   @override
@@ -205,18 +222,32 @@ class _CharacterScreenState extends State<CharacterScreen> {
                   label: "Menu"),
             ],
           ),
-          floatingActionButton: (_selectedIndex == 1 || _selectedIndex == 2) ||
-                  ((_selectedWidgetMenu == 1 ||
-                          _selectedWidgetMenu == 2 ||
-                          _selectedIndex == 4) &&
-                      _selectedIndex == 3)
+          floatingActionButton: renderFloating()
               ? FloatingActionButton(
                   onPressed: () {
+                    if (_selectedIndex == 2) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => CreateItem(
+                                    id: widget.id,
+                                  )));
+                    }
                     if (_selectedIndex == 3) {
-                      switch(_selectedWidgetMenu) {
+                      switch (_selectedWidgetMenu) {
                         case 2:
-                          Navigator.push(_, MaterialPageRoute(builder: (_) => AddAliesScreen(id: widget.id, type: "Allies")));
+                          Navigator.push(
+                              _,
+                              MaterialPageRoute(
+                                  builder: (_) => AddAliesScreen(
+                                      id: widget.id, type: "Allies")));
                           break;
+                        case 4:
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) =>
+                                      CreateNote(id: widget.id, type: "")));
                       }
                     }
                   },

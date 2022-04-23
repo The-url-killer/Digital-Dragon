@@ -22,13 +22,12 @@ createCampaign({name, image, email, history}) async {
 getCampaignInfo({id}) async {
   Response<dynamic> response = await Dio().get(baseUrl + id);
   var campaign = response.data;
-  print(campaign);
   var monsters = campaign["monsters"]
       .map((monster) => CampaignCharacterModel(
           id: monster["id"],
           name: monster["name"],
           image: monster["image"],
-          aClass: "Bárbaro",
+          aClass: monster["aclass"],
           lore: monster["lore"]))
       .toList();
   var npcs = campaign["npcs"]
@@ -36,7 +35,7 @@ getCampaignInfo({id}) async {
           id: npc["id"],
           name: npc["name"],
           image: npc["image"],
-          aClass: "ferreiro",
+          aClass: npc["aclass"],
           lore: npc["lore"]))
       .toList();
   var places = campaign["places"]
@@ -51,7 +50,7 @@ getCampaignInfo({id}) async {
           id: npc["id"],
           name: npc["name"],
           image: npc["image"],
-          aClass: "Guerreiro",
+          aClass: npc["aclass"],
           lore: npc["lore"]))
       .toList();
 
@@ -74,8 +73,33 @@ createNote({text, id, type}) async {
   return response.data;
 }
 
-createNpc({name, image, id, lore, level, aClass}) async {
-  Response<dynamic> response = await Dio().post(baseUrl + "create-npc",
-      data: {name, image, id, lore, level, aClass});
+createNpc({name, image, id, lore, level, aclass}) async {
+  Response<dynamic> response = await Dio().post(baseUrl + "create-npc", data: {
+    "name": name,
+    "image": image,
+    "id": id,
+    "lore": lore,
+    "level": level,
+    "aclass": aclass
+  });
+  return response.data;
+}
+
+createMonster({name, image, id, lore, level, aclass}) async {
+  Response<dynamic> response =
+      await Dio().post(baseUrl + "create-monster", data: {
+    "name": name,
+    "image": image,
+    "id": id,
+    "lore": lore,
+    "level": level,
+    "race": aclass
+  });
+  return response.data;
+}
+
+craetePlace({name, image, lore, id}) async {
+  Response<dynamic> response = await Dio().post(baseUrl + "create-place",
+      data: {"name": name, "image": image, "lore": lore, "id": id});
   return response.data;
 }

@@ -1,7 +1,9 @@
 package com.digital_dragon.Digital.Dragon.controller;
 
+import com.digital_dragon.Digital.Dragon.models.Skill;
 import com.digital_dragon.Digital.Dragon.representation.request.CharacterHomeResponse;
 import com.digital_dragon.Digital.Dragon.representation.request.CreateCharacterRequest;
+import com.digital_dragon.Digital.Dragon.representation.request.CreateItemRequest;
 import com.digital_dragon.Digital.Dragon.representation.response.CharacterResponse;
 import com.digital_dragon.Digital.Dragon.services.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +36,16 @@ public class CharacterController {
     public CharacterResponse getCharactera(@PathVariable String id) throws ExecutionException, InterruptedException {
         return service.getCharactera(id);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/create-item")
+    public void createItem(@RequestBody CreateItemRequest createItemRequest) throws ExecutionException, InterruptedException {
+        service.createItem(createItemRequest);
+    }
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/create-speel")
+    public void createSkill(@RequestBody Skill skill) throws ExecutionException, InterruptedException {
+        service.createSkill(skill);
+    }
+
 }

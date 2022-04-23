@@ -190,9 +190,33 @@ class _CampaignState extends State<Campaign> {
                     (_selectedIndex == 3 && _selectedWidgetMenu != 3)
                 ? FloatingActionButton(
                     onPressed: () {
+                      if (_selectedIndex == 2) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => AddAliesScreen(
+                                      id: widget.id,
+                                      type: "monster",
+                                    )));
+                      }
                       if (_selectedIndex == 3) {
                         if (_selectedWidgetMenu == 0) {
-                          Navigator.push(context, MaterialPageRoute(builder: (_) => AddAliesScreen(id: widget.id, type: "npc",)));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => AddAliesScreen(
+                                        id: widget.id,
+                                        type: "npc",
+                                      )));
+                        }
+                        if (_selectedWidgetMenu == 1) {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => AddAliesScreen(
+                                        id: widget.id,
+                                        type: "place",
+                                      )));
                         }
                         if (_selectedWidgetMenu == 2) {
                           Navigator.push(

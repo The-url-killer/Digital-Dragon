@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class Skill implements Serializable {
+  private String id;
   private Integer level;
   private String name;
   private List<String> classes;

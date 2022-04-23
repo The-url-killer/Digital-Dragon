@@ -49,32 +49,40 @@ class _CreateNoteState extends State<CreateNote> {
             width: Sizes.width(context),
             height: 80,
           ),
-          const Text(
-            "Crie uma nota",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: FontSize.kFontSize36,
-              color: ColorsApp.kPrimaryColor,
-            ),
-          ),
-          SizedBox(
-            width: Sizes.width(context),
-            height: 80,
-          ),
-          TextFormField(
-            controller: loreController,
-            maxLines: 3,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(8)),
-                  borderSide: BorderSide(color: ColorsApp.kBlack, width: 1),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text(
+                  "Crie uma nota",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: FontSize.kFontSize36,
+                    color: ColorsApp.kPrimaryColor,
+                  ),
                 ),
-                hintText: 'Nos conte sobre  a  sua campanha',
-                hintStyle: TextStyle(color: ColorsApp.kPrimaryColor)),
-          ),
-          SizedBox(height: Sizes.heigth(context) * .1),
-          SolidButton("Salvar", ColorsApp.kPrimaryColor, ColorsApp.kWhite,
-              handleClick, "solid")
+                SizedBox(
+                  width: Sizes.width(context),
+                  height: 80,
+                ),
+                TextFormField(
+                  controller: loreController,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide: BorderSide(color: ColorsApp.kBlack, width: 1),
+                      ),
+                      hintText: 'Nos conte sobre  a  sua campanha',
+                      hintStyle: TextStyle(color: ColorsApp.kPrimaryColor)),
+                ),
+                SizedBox(height: Sizes.heigth(context) * .1),
+                SolidButton("Salvar", ColorsApp.kPrimaryColor, ColorsApp.kWhite,
+                    handleClick, "solid")
+              ],
+            ),
+          )
         ],
       ),
     );

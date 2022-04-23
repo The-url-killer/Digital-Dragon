@@ -1,5 +1,7 @@
 import 'package:digital_dragon_v1/constants/base_url.dart';
 import 'package:digital_dragon_v1/model/character-model-screen-representation.model.dart';
+import 'package:digital_dragon_v1/model/item.model.dart';
+import 'package:digital_dragon_v1/model/spell.model.dart';
 import 'package:dio/dio.dart';
 
 getCharacters({email}) async {
@@ -48,6 +50,33 @@ getCharactersInfo({id}) async {
     "pe": character["money"]["pp"],
     "pl": character["money"]["pl"],
   };
+  var itens = character["itens"]
+      .map((item) => Item(
+            id: item["id"],
+            name: item["name"],
+            price: item["price"],
+            size: item["size"],
+            typeEquipment: item["typeEquipment"],
+            armorClass: item["armorClass"],
+            damage: item["damage"],
+            description: item["description"],
+            desStealth: item["desStealth"],
+            strength: item["strength"],
+            weaponClass: item["weaponClass"],
+          ))
+      .toList();
+  var spells = character["speels"]
+      .map((speel) => Skill(
+          name: speel["name"],
+          castTime: speel["castTime"],
+          classes: speel["classes"],
+          component: speel["component"],
+          description: speel["description"],
+          duration: speel["duration"],
+          level: speel["level"],
+          range: speel["range"],
+          school: speel["school"]))
+      .toList();
 
   return CharacterModelScreen(
     id: character["id"],
@@ -77,8 +106,8 @@ getCharactersInfo({id}) async {
     pets: character["pets"],
     user: character["user"],
     campaign: character["campaign"],
-    itens: character["itens"],
-    speels: character["speels"],
+    itens: itens,
+    speels: spells,
   );
 }
 
@@ -88,20 +117,6 @@ createAllie({name, image, id, history, level}) async {
       data: {name, image, id, history, level});
   return response.data;
 }
-
-createMonster({name, image, id, lore, level, aClass}) async {
-  Response<dynamic> response =
-      await Dio().post(BaseUrl.baseUrl + "/create-monster", data: {
-    "name": name,
-    "image": image,
-    "id": id,
-    "lore": lore,
-    "level": level,
-    "race": aClass
-  });
-  return response.data;
-}
-
 
 createItem(
     {name,
@@ -117,23 +132,17 @@ createItem(
     id}) async {
   Response<dynamic> response =
       await Dio().post(BaseUrl.baseUrl + "/create-item", data: {
-    name,
-    price,
-    size,
-    typeEquipment,
-    description,
-    damage,
-    weaponClass,
-    desStealth,
-    armorClass,
-    strength,
-    id
+    "name": name,
+    "price": price,
+    "size": size,
+    "typeEquipment": typeEquipment,
+    "description": description,
+    "damage": damage,
+    "weaponClass": weaponClass,
+    "desStealth": desStealth,
+    "armorClass": armorClass,
+    "strength": strength,
+    "id": id
   });
-  return response.data;
-}
-
-craetePlace({name, image, lore, id}) async {
-  Response<dynamic> response = await Dio()
-      .post(BaseUrl.baseUrl + "/create-place", data: {name, image, lore, id});
   return response.data;
 }

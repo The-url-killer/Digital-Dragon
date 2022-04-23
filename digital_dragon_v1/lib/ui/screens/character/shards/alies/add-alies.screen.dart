@@ -50,7 +50,7 @@ class _AddAliesScreenState extends State<AddAliesScreen> {
             "https://i.pinimg.com/564x/df/68/a0/df68a002fbf9186328ea24f147090618.jpg",
         id: widget.id,
         lore: loreController.text,
-        aClass: classController.text,
+        aclass: classController.text,
         level: Random().nextInt(20) + 1,
       );
     } else if (widget.type == "place") {
@@ -68,7 +68,7 @@ class _AddAliesScreenState extends State<AddAliesScreen> {
             "https://i.pinimg.com/564x/df/68/a0/df68a002fbf9186328ea24f147090618.jpg",
         id: widget.id,
         lore: loreController.text,
-        aClass: classController.text,
+        aclass: classController.text,
         level: Random().nextInt(20) + 1,
       );
       Navigator.pop(context);
@@ -132,30 +132,52 @@ class _AddAliesScreenState extends State<AddAliesScreen> {
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            renderImage(),
-            SizedBox(height: Sizes.heigth(context) * .1),
-            InputNoBorder(
-                controller: nameController, hint: 'Digite o nome da campanha'),
-            TextFormField(
-              controller: loreController,
-              maxLines: 3,
-              decoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    borderSide: BorderSide(color: ColorsApp.kBlack, width: 1),
+            Positioned(
+              right: 7,
+              top: 7,
+              child: IconButton(
+                  icon: const Icon(
+                    Icons.arrow_back_ios_new,
+                    color: ColorsApp.kPrimaryColor,
+                    size: 30,
                   ),
-                  hintText: 'Nos conte sobre  a  sua campanha',
-                  hintStyle: TextStyle(color: ColorsApp.kPrimaryColor)),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
             ),
-            renderClass(),
-            const SizedBox(height: 20),
-            SizedBox(
-              width: Sizes.width(context) * .4,
-              child: SolidButton("Finish", ColorsApp.kPrimaryColor,
-                  ColorsApp.kWhite, handleClickFinish, TypeButton.solid),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                const SizedBox(
+                  height: 80,
+                ),
+                renderImage(),
+                const SizedBox(height: 20),
+                InputNoBorder(
+                    controller: nameController,
+                    hint: 'Digete o nome aqui'),
+                TextFormField(
+                  controller: loreController,
+                  maxLines: 3,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(8)),
+                        borderSide:
+                            BorderSide(color: ColorsApp.kBlack, width: 1),
+                      ),
+                      hintText: 'Nos conte mais sobre ele',
+                      hintStyle: TextStyle(color: ColorsApp.kPrimaryColor)),
+                ),
+                renderClass(),
+                const SizedBox(height: 120),
+                SizedBox(
+                  width: Sizes.width(context) * .4,
+                  child: SolidButton("Finish", ColorsApp.kPrimaryColor,
+                      ColorsApp.kWhite, handleClickFinish, TypeButton.solid),
+                ),
+              ],
             ),
           ],
         ),
