@@ -74,7 +74,7 @@ class _CreateNoteState extends State<CreateNote> {
                         borderRadius: BorderRadius.all(Radius.circular(8)),
                         borderSide: BorderSide(color: ColorsApp.kBlack, width: 1),
                       ),
-                      hintText: 'Nos conte sobre  a  sua campanha',
+                      hintText: 'Nos conte sobre a sua campanha',
                       hintStyle: TextStyle(color: ColorsApp.kPrimaryColor)),
                 ),
                 SizedBox(height: Sizes.heigth(context) * .1),

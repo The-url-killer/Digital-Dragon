@@ -401,7 +401,7 @@ class _CharacterHomeScreenState extends State<CharacterHomeScreen> {
                       IconButton(
                         onPressed: () {
                           setState(() {
-                            winsdom -= 1;
+                            winsdom += 1;
                           });
                         },
                         icon: const Icon(Icons.plus_one_outlined, size: 20),
@@ -435,7 +435,7 @@ class _CharacterHomeScreenState extends State<CharacterHomeScreen> {
                       IconButton(
                         onPressed: () {
                           setState(() {
-                            carism -= 1;
+                            carism += 1;
                           });
                         },
                         icon: const Icon(Icons.plus_one_outlined, size: 20),

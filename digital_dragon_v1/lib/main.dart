@@ -44,9 +44,10 @@ class MyApp extends StatelessWidget {
               Routes.createCharacter: (context) => const CreateCharacter(),
             },
             home: const Scaffold(
-              body: Start(
-                key: Key("startScreen"),
-              ),
+              // body: Start(
+              //   key: Key("startScreen"),
+              // ),
+              body: CreateCharacter(),
             ),
           );
         }
