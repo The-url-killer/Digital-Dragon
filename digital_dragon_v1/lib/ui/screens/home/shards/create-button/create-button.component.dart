@@ -1,6 +1,7 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
+import 'package:digital_dragon_v1/ui/screens/create-character/create-character.screen.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -17,7 +18,7 @@ class CreateButton extends StatelessWidget {
           Navigator.of(context).pushNamed(Routes.createCampaign);
           break;
         case 'character':
-          Navigator.of(context).pushNamed(Routes.createCharacter);
+          Navigator.push(context, MaterialPageRoute(builder: (_) => const CreateCharacter()));
           break;
         default:
           break;

@@ -1,6 +1,7 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
-import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/model/character-model-screen-representation.model.dart';
 import 'package:digital_dragon_v1/ui/resources/character_details_icons.dart';
 import 'package:fl_chart/fl_chart.dart';

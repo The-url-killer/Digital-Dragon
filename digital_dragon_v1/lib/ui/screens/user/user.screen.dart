@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:digital_dragon_v1/context/globals.dart' as globals;
 
 class UserScreen extends StatefulWidget {
-  UserScreen({Key? key}) : super(key: key);
+  const UserScreen({Key? key}) : super(key: key);
 
   @override
   State<UserScreen> createState() => _UserScreenState();

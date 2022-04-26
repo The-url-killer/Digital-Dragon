@@ -1,7 +1,3 @@
-import 'package:digital_dragon_v1/model/campaign-character-representation.model.dart';
-import 'package:digital_dragon_v1/model/item.model.dart';
-import 'package:digital_dragon_v1/model/spell.model.dart';
-
 class CharacterModelScreen {
   String id;
   String aClass;

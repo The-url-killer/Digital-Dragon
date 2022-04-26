@@ -1,4 +1,3 @@
-import 'package:digital_dragon_v1/ui/screens/campaign/campaign.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/create-campaign/create-campaign.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/create-character/create-character.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/home/home.screen.dart';
@@ -44,10 +43,9 @@ class MyApp extends StatelessWidget {
               Routes.createCharacter: (context) => const CreateCharacter(),
             },
             home: const Scaffold(
-              // body: Start(
-              //   key: Key("startScreen"),
-              // ),
-              body: CreateCharacter(),
+              body: Start(
+                key: Key("startScreen"),
+              ),
             ),
           );
         }

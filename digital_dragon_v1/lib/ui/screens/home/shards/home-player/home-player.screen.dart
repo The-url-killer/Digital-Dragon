@@ -1,8 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_home_screen.dart';
-import 'package:digital_dragon_v1/model/character-representation.model.dart';
 import 'package:digital_dragon_v1/ui/screens/home/components/card-item-carousel.component.dart';
 import 'package:digital_dragon_v1/context/globals.dart' as globals;
 import 'package:digital_dragon_v1/ui/screens/home/shards/create-button/create-button.component.dart';
@@ -38,7 +36,7 @@ class HomePlayer extends StatelessWidget {
         InkWell(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => UserScreen()));
+                context, MaterialPageRoute(builder: (_) => const UserScreen()));
           },
           child: CircleAvatar(
             backgroundImage: NetworkImage(globals.userData.image),

@@ -12,7 +12,7 @@ class Steps extends StatelessWidget {
     double height = 16;
     BorderRadius borderRadius = BorderRadius.circular(height / 2);
     double width = Sizes.width(context) * .9;
-    int numberOfSteps = 5;
+    int numberOfSteps = 4;
     double widthProgressbar = ((numberOfSteps - step) / numberOfSteps) * width;
 
     return Container(

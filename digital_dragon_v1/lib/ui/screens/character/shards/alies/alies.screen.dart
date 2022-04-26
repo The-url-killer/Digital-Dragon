@@ -1,4 +1,5 @@
-import 'package:digital_dragon_v1/model/campaign-character-representation.model.dart';
+// ignore_for_file: must_be_immutable
+
 import 'package:digital_dragon_v1/ui/components/character.component.dart';
 import 'package:digital_dragon_v1/ui/screens/info/info.screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,6 +34,5 @@ class _AliesState extends State<Alies> {
                   child: Character(character: ally)))
               .toList(),
         ));
-    ;
   }
 }

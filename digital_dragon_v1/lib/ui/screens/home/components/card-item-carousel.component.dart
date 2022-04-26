@@ -1,6 +1,5 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
-import 'package:digital_dragon_v1/constants/routes.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_home_screen.dart';
 import 'package:digital_dragon_v1/ui/screens/campaign/campaign.screen.dart';

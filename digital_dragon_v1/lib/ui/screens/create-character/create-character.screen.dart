@@ -1,11 +1,10 @@
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/font_size.dart';
-import 'package:digital_dragon_v1/model/character-model-screen-representation.model.dart';
+import 'package:digital_dragon_v1/hooks/use-characters.hook.dart';
 import 'package:digital_dragon_v1/ui/resources/character_details_icons.dart';
-import 'package:digital_dragon_v1/ui/screens/character/shards/character-home/character-home.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/create-character/shards/steps.component.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:digital_dragon_v1/context/globals.dart' as globals;
 
 class CreateCharacter extends StatefulWidget {
   const CreateCharacter({Key? key}) : super(key: key);
@@ -15,7 +14,7 @@ class CreateCharacter extends StatefulWidget {
 }
 
 class _CreateCharacterState extends State<CreateCharacter> {
-  static String email = "diulinho@rei.delas";
+  static String email = globals.email;
   TextEditingController nameController = TextEditingController();
   TextEditingController raceController = TextEditingController();
   TextEditingController classController = TextEditingController();
@@ -30,6 +29,7 @@ class _CreateCharacterState extends State<CreateCharacter> {
   TextEditingController defectsController = TextEditingController();
   TextEditingController personalityTrailsController = TextEditingController();
   Map<String, bool> expertises = {};
+  int step = 0;
 
   @override
   void initState() {
@@ -62,6 +62,38 @@ class _CreateCharacterState extends State<CreateCharacter> {
   double carism = 0;
   double winsdom = 0;
   double dextery = 0;
+
+  handleClickFinish() async {
+    await create(
+        classe: classController.text,
+        age: int.parse(ageController.text),
+        atributes: {
+          "constituation": constituation.toInt(),
+          "dextery": dextery.toInt(),
+          "inteligence": smart.toInt(),
+          "strength": strength.toInt(),
+          "winsdom": winsdom.toInt(),
+          "carism": carism.toInt(),
+        },
+        expertises: expertises,
+        hair: hairController.text,
+        height: double.parse(heightController.text),
+        tendency: tendencyController.text,
+        name: nameController.text,
+        peel: peelController.text,
+        race: raceController.text,
+        image:
+            "https://i.pinimg.com/564x/ee/29/1b/ee291bc6c014458ffefd5a8d454b3cde.jpg",
+        campaign: "",
+        connections: connectionsController.text,
+        defects: defectsController.text,
+        lore: loreController.text,
+        ideas: ideasController.text,
+        personalityTrails: personalityTrailsController.text,
+        email: email);
+
+    Navigator.pop(context);
+  }
 
   TextStyle titleStyle = const TextStyle(
       fontSize: FontSize.kFontSize24, color: ColorsApp.kPrimaryColor);
@@ -115,8 +147,6 @@ class _CreateCharacterState extends State<CreateCharacter> {
     }
   }
 
-  int step = 3;
-
   @override
   Widget build(BuildContext context) {
     renderStep() {
@@ -126,15 +156,19 @@ class _CreateCharacterState extends State<CreateCharacter> {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(35),
-                  child: SizedBox(
-                      height: 140,
-                      width: 140,
-                      child: Image.network(
-                        "https://i.pinimg.com/564x/ee/29/1b/ee291bc6c014458ffefd5a8d454b3cde.jpg",
-                        fit: BoxFit.cover,
-                      )),
+                SizedBox(
+                  height: 140,
+                  width: 140,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(35),
+                    child: SizedBox(
+                        height: 140,
+                        width: 140,
+                        child: Image.network(
+                          "https://i.pinimg.com/564x/ee/29/1b/ee291bc6c014458ffefd5a8d454b3cde.jpg",
+                          fit: BoxFit.cover,
+                        )),
+                  ),
                 ),
                 const SizedBox(width: 8),
                 SizedBox(
@@ -193,7 +227,7 @@ class _CreateCharacterState extends State<CreateCharacter> {
                       ),
                     ),
                   ),
-                )
+                ),
               ],
             ),
           ],
@@ -252,27 +286,31 @@ class _CreateCharacterState extends State<CreateCharacter> {
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                InkWell(
-                  onTap: () {
-                    setState(() {
-                      step = 2;
-                    });
-                  },
-                  child: Container(
-                    width: 85,
-                    height: 35,
-                    decoration: BoxDecoration(
-                      color: ColorsApp.kPrimaryColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.all(6),
-                    child: const Text(
-                      "Done",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: ColorsApp.kWhite,
-                        fontSize: FontSize.kFontSize18,
-                        fontWeight: FontWeight.bold,
+                SizedBox(
+                  width: 85,
+                  height: 35,
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        step = 2;
+                      });
+                    },
+                    child: Container(
+                      width: 85,
+                      height: 35,
+                      decoration: BoxDecoration(
+                        color: ColorsApp.kPrimaryColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      padding: const EdgeInsets.all(6),
+                      child: const Text(
+                        "Done",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: ColorsApp.kWhite,
+                          fontSize: FontSize.kFontSize18,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
@@ -598,7 +636,6 @@ class _CreateCharacterState extends State<CreateCharacter> {
                         children: [
                           InkWell(
                             onTap: () {
-                              print("Filho da puta");
                               setState(() {
                                 expertises["animals"] = !expertises["animals"]!;
                               });
@@ -1231,6 +1268,32 @@ class _CreateCharacterState extends State<CreateCharacter> {
                     ],
                   ),
                   const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      InkWell(
+                        onTap: handleClickFinish,
+                        child: Container(
+                          width: 85,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            color: ColorsApp.kPrimaryColor,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: const EdgeInsets.all(6),
+                          child: const Text(
+                            "Finish",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: ColorsApp.kWhite,
+                              fontSize: FontSize.kFontSize18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -1239,42 +1302,40 @@ class _CreateCharacterState extends State<CreateCharacter> {
       }
     }
 
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Row(children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 8),
-                child: IconButton(
-                  onPressed: () {
-                    if (step == 0) {
-                      Navigator.pop(context);
-                    } else if (step == 1) {
-                      setState(() {
-                        step = 0;
-                      });
-                    } else if (step == 2) {
-                      setState(() {
-                        step = 1;
-                      });
-                    }
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back_ios_new,
-                    color: ColorsApp.kPrimaryColor,
-                    size: 30,
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Row(children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 8),
+                  child: IconButton(
+                    onPressed: () {
+                      if (step == 0) {
+                        Navigator.pop(context);
+                      } else {
+                        setState(() {
+                          step--;
+                        });
+                      }
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back_ios_new,
+                      color: ColorsApp.kPrimaryColor,
+                      size: 30,
+                    ),
                   ),
-                ),
-              )
-            ]),
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-              Steps(step: step),
-              const SizedBox(height: 24),
-              renderStep(),
-            ]),
-          ],
+                )
+              ]),
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                Steps(step: step),
+                const SizedBox(height: 24),
+                renderStep(),
+              ]),
+            ],
+          ),
         ),
       ),
     );

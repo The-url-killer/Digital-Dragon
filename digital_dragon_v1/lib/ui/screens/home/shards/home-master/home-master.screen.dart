@@ -25,7 +25,7 @@ class _MasterHomeState extends State<MasterHome> {
         InkWell(
           onTap: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => UserScreen()));
+                context, MaterialPageRoute(builder: (_) => const UserScreen()));
           },
           child: CircleAvatar(
             backgroundImage: NetworkImage(globals.userData.image),

@@ -146,3 +146,47 @@ createItem(
   });
   return response.data;
 }
+
+create({
+  required classe,
+  required age,
+  required atributes,
+  required expertises,
+  required hair,
+  required height,
+  required tendency,
+  required name,
+  required peel,
+  required race,
+  required image,
+  required campaign,
+  required connections,
+  required defects,
+  required lore,
+  required ideas,
+  required personalityTrails,
+  required email,
+}) async {
+  Response<dynamic> response =
+      await Dio().post(BaseUrl.baseUrl + "/create", data: {
+    "classe": classe,
+    "age": age,
+    "atributes": atributes,
+    "expertises": expertises,
+    "hair": hair,
+    "heigth": height,
+    "tendency": tendency,
+    "name": name,
+    "peel": peel,
+    "email": email,
+    "personalityTrails": personalityTrails,
+    "image": image,
+    "lore": lore,
+    "ideas": ideas,
+    "defects": defects,
+    "connections": connections,
+    "race": race,
+    "campaign": campaign,
+  });
+  return response;
+}

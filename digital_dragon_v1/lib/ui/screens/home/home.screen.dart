@@ -1,13 +1,13 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'dart:core';
 
-import 'package:digital_dragon_v1/constants/base_url.dart';
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/hooks/use-characters.hook.dart';
 import 'package:digital_dragon_v1/hooks/use-user.hook.dart';
 import 'package:digital_dragon_v1/hooks/user-campaing.hook.dart';
 import 'package:digital_dragon_v1/model/campaign-representation.model.dart';
 import 'package:digital_dragon_v1/model/character-representation.model.dart';
-import 'package:digital_dragon_v1/model/user-data.model.dart';
 import 'package:digital_dragon_v1/ui/resources/app_icons.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/home-master/home-master.screen.dart';
 import 'package:digital_dragon_v1/ui/screens/home/shards/home-player/home-player.screen.dart';

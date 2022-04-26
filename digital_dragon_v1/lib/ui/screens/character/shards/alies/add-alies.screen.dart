@@ -1,9 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'dart:math';
 
 import 'package:digital_dragon_v1/constants/colors.dart';
 import 'package:digital_dragon_v1/constants/sizes.dart';
 import 'package:digital_dragon_v1/constants/type_button.dart';
-import 'package:digital_dragon_v1/hooks/use-characters.hook.dart';
 import 'package:digital_dragon_v1/hooks/user-campaing.hook.dart';
 import 'package:digital_dragon_v1/ui/components/input-no-border/input-no-border.component.dart';
 import 'package:digital_dragon_v1/ui/components/solid-button.component.dart';
